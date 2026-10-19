@@ -1,21 +1,48 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Thai Font Kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "com.chistudio.thaifontkit",
-  "build": { "beforeDevCommand": "npm run dev", "devUrl": "http://127.0.0.1:1420", "beforeBuildCommand": "npm run build", "frontendDist": "../dist" },
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
   "app": {
-    "windows": [{ "title": "Thai Font Kit", "width": 1140, "height": 800, "minWidth": 780, "minHeight": 600 }],
-    "security": { "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' blob:; connect-src ipc: http://ipc.localhost" }
+    "windows": [
+      {
+        "title": "Thai Font Kit",
+        "width": 1140,
+        "height": 800,
+        "minWidth": 780,
+        "minHeight": 600
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' blob:; connect-src ipc: http://ipc.localhost"
+    }
   },
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
     "shortDescription": "Google Fonts ภาษาไทย ติดตั้งง่าย ใช้ได้ในเครื่อง",
     "category": "Utility",
     "license": "MIT",
-    "windows": { "nsis": { "installMode": "currentUser" } },
-    "macOS": { "minimumSystemVersion": "11.0" }
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser"
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
   }
 }

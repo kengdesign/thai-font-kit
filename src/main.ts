@@ -24,7 +24,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="nav" data-filter="installed"><span>✓</span>ติดตั้งผ่านแอปแล้ว <b id="installed-count">—</b></button>
     </nav>
     <div class="side-note"><span class="note-icon">↙</span><strong>เลือก • ทดลอง • ติดตั้ง</strong><p>ดาวน์โหลดเฉพาะฟอนต์ที่เลือก<br>ติดตั้งแล้วใช้งานออฟไลน์ได้</p></div>
-    <div class="side-bottom">OPEN SOURCE · v0.1.0 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
+    <div class="side-bottom">OPEN SOURCE · v0.2.0 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
   </aside>
   <main>
     <header><div class="eyebrow">MADE FOR THAI CREATORS</div><h1>ฟอนต์ไทยที่ใช่<br><span>พร้อมใช้ในเครื่องคุณ</span></h1><p>เลือกฟอนต์สำหรับงานชิ้นต่อไป ทดลองข้อความ แล้วติดตั้งได้ในไม่กี่คลิก</p><span class="badge">ใช้งานฟรี · ไม่ต้องสมัครสมาชิก</span></header>

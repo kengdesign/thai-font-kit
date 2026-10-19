@@ -3580,7 +3580,7 @@ dependencies = [
 
 [[package]]
 name = "thai-font-kit"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "serde",
  "tauri",
@@ -3590,7 +3590,7 @@ dependencies = [
 
 [[package]]
 name = "thai-font-kit-core"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "directories",
  "fs2",

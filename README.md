@@ -2,7 +2,7 @@
 
 แอปโอเพนซอร์สสำหรับเลือก ทดลอง และติดตั้ง Google Fonts ภาษาไทยลงเครื่อง
 
-**สถานะ: 0.1.0 Alpha — ตัวติดตั้งผ่าน GitHub Actions ทั้ง Windows, macOS และ Linux; ยังต้องทดสอบการใช้งานจริงกับโปรแกรมออกแบบ**
+**สถานะ: 0.2.0 Alpha — ตัวติดตั้งผ่าน GitHub Actions ทั้ง Windows, macOS และ Linux; ยังต้องทดสอบการใช้งานจริงกับโปรแกรมออกแบบ**
 
 [ดาวน์โหลดรุ่น Alpha](https://github.com/kengdesign/thai-font-kit/releases) · [ดูผล build](https://github.com/kengdesign/thai-font-kit/actions)
 
@@ -12,7 +12,8 @@
 
 ## ทำอะไรได้แล้ว
 
-- ค้นหา 8 ตระกูล รวม 74 ไฟล์: Sarabun, Noto Sans Thai, Noto Serif Thai, Prompt, Kanit, Anuphan, Bai Jamjuree, IBM Plex Sans Thai
+- ค้นหาฟอนต์ภาษาไทยครบ 34 ตระกูล รวม 257 ไฟล์ ตามรายการ Google Fonts ดู [รายชื่อทั้งหมด](docs/FONTS.md)
+- เพิ่มจากรุ่น 0.1 จำนวน 26 ตระกูล โดยคงข้อมูลฟอนต์เดิมให้จัดการต่อได้หลังอัปเดต
 - ทดลองข้อความด้วยไฟล์ฟอนต์จริงใน WebView ก่อนติดตั้ง (โหลดเฉพาะไฟล์ตัวอย่าง)
 - ติดตั้งทุกน้ำหนักในตระกูลที่เลือก สำหรับผู้ใช้ปัจจุบัน ไม่ขอสิทธิ์ admin
 - ดาวน์โหลดจาก Google Fonts repository โดย pin commit และตรวจขนาด / SHA-256 / glyph ภาษาไทย

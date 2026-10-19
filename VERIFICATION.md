@@ -1,5 +1,17 @@
 # Executed verification — 2026-10-20
 
+## Version 0.2.0 — 34-family expansion
+
+- Matched the complete Thai subset from the official Google Fonts metadata: exactly 34 families and 257 font files.
+- Downloaded and validated SHA-256, font parsing and representative Thai glyph coverage for all 257 files using `verify_all_catalog_fonts`.
+- Compared all 8 legacy family entries to version 0.1: unchanged IDs, filenames, checksums, sizes and licences. Added a regression test preserving existing installation receipts.
+- Default core tests: 9 passed on Linux; the complete-catalog test was then run explicitly and passed.
+- Playwright: 3 passed, including search and selection of the newly added Google Sans family.
+- TypeScript/Vite build, Rust formatting and Python syntax checks passed.
+- Native installers are built by the same GitHub Actions matrix before the 0.2.0 alpha is published. Results appear in the repository Actions page and release assets.
+
+## Earlier version 0.1 build evidence
+
 ## Passed
 
 - `npm run build`: TypeScript type checking and Vite production bundle.

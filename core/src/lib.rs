@@ -267,7 +267,7 @@ impl<P: Platform> Manager<P> {
             .timeout(Duration::from_secs(60))
             .connect_timeout(Duration::from_secs(15))
             .redirect(reqwest::redirect::Policy::none())
-            .user_agent("ThaiFontKit/0.1")
+            .user_agent(concat!("ThaiFontKit/", env!("CARGO_PKG_VERSION")))
             .build()
             .map_err(err)?;
         let mut url = reqwest::Url::parse(&format!(
@@ -483,7 +483,7 @@ mod tests {
     #[test]
     fn catalog_is_valid_and_has_thai_families() {
         let cat = catalog().unwrap();
-        assert!(cat.families.len() >= 8);
+        assert_eq!(cat.families.len(), 34);
         for f in cat.families {
             assert!(!f.files.is_empty());
             assert!(f.license.contains("SIL OPEN FONT LICENSE"));
@@ -496,6 +496,45 @@ mod tests {
         }
         let f = catalog().unwrap().families.remove(0).files.remove(0);
         assert!(validate_font(b"untrusted", &f).is_err());
+    }
+    #[test]
+    fn legacy_installed_fonts_remain_recognizable_after_upgrade() {
+        let old: Catalog = serde_json::from_str(include_str!("../legacy-v0.1.json")).unwrap();
+        let current = catalog().unwrap();
+        for old_family in old.families {
+            let family = current
+                .families
+                .iter()
+                .find(|f| f.id == old_family.id)
+                .expect("Legacy family was removed");
+            for old_font in old_family.files {
+                let font = family
+                    .files
+                    .iter()
+                    .find(|f| f.filename == old_font.filename)
+                    .expect("Legacy font was removed");
+                assert_eq!(
+                    font.sha256, old_font.sha256,
+                    "Existing installation receipts must stay valid"
+                );
+            }
+        }
+    }
+    #[test]
+    #[ignore = "maintainer check: requires TFK_FONT_CACHE populated by scripts/catalog.py"]
+    fn verify_all_catalog_fonts() {
+        let cache = PathBuf::from(std::env::var("TFK_FONT_CACHE").expect("Set TFK_FONT_CACHE"));
+        let cat = catalog().unwrap();
+        let mut count = 0;
+        for family in cat.families {
+            for font in family.files {
+                let data = fs::read(cache.join(format!("{}.ttf", font.sha256))).unwrap();
+                validate_font(&data, &font)
+                    .unwrap_or_else(|e| panic!("{} / {}: {e}", family.name, font.filename));
+                count += 1;
+            }
+        }
+        println!("Verified SHA-256, font parsing and Thai coverage for {count} font files");
     }
     #[test]
     fn uninstall_preserves_modified_and_unmanaged_fonts() {

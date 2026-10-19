@@ -7,7 +7,11 @@ const fixture = Array.from(readFileSync(new URL('../core/assets/Anuphan.ttf', im
 test('browser preview is honest, search works, and installation is disabled', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#notice')).toContainText('ตัวอย่างหน้าจอ');
-  await expect(page.locator('.font-card')).toHaveCount(8);
+  await expect(page.locator('.font-card')).toHaveCount(34);
+  await page.getByRole('searchbox').fill('Google Sans');
+  await expect(page.locator('.font-card')).toHaveCount(1);
+  await page.locator('.font-card').click();
+  await expect(page.locator('#family-name')).toHaveText('Google Sans');
   await page.getByRole('searchbox').fill('Kanit');
   await expect(page.locator('.font-card')).toHaveCount(1);
   await page.locator('.font-card').click();
