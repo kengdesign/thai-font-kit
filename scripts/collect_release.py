@@ -11,7 +11,9 @@ if not files:
     raise SystemExit("No installer produced; refusing to publish an empty artifact")
 checksums = []
 for file in files:
-    destination = output / file.name
+    # GitHub normalizes spaces in asset names to dots. Normalize before hashing
+    # so SHA256SUMS also works against files downloaded from a public release.
+    destination = output / file.name.replace(" ", ".")
     if destination.exists():
         raise SystemExit(f"Duplicate installer filename: {file.name}")
     shutil.copy2(file, destination)

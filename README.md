@@ -2,7 +2,9 @@
 
 แอปโอเพนซอร์สสำหรับเลือก ทดลอง และติดตั้ง Google Fonts ภาษาไทยลงเครื่อง
 
-**สถานะ: 0.1.0 alpha — ซอร์สต้นแบบ ต้องผ่านการ build และทดสอบบนเครื่องจริงก่อนแจกทั่วไป**
+**สถานะ: 0.1.0 Alpha — ตัวติดตั้งผ่าน GitHub Actions ทั้ง Windows, macOS และ Linux; ยังต้องทดสอบการใช้งานจริงกับโปรแกรมออกแบบ**
+
+[ดาวน์โหลดรุ่น Alpha](https://github.com/kengdesign/thai-font-kit/releases) · [ดูผล build](https://github.com/kengdesign/thai-font-kit/actions)
 
 รองรับเป้าหมาย Windows x64, macOS Apple Silicon / Intel และ Linux x64 ใช้ Tauri 2 + Rust และ WebView ของระบบ ไม่มีบัญชีผู้ใช้ ไม่มี telemetry ไม่มีบริการทำงานเบื้องหลัง และไม่มีระบบอัปเดตอัตโนมัติในรุ่นแรก
 

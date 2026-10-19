@@ -11,11 +11,23 @@
 - Platform adapter type checking for Windows GNU x64 and macOS Apple Silicon in a small temporary crate containing the same `platform.rs`. These are compile checks only, not native linking, registry / Core Text runtime tests, or full Tauri builds.
 - UI rendered in Chromium and visually inspected; fixed the preview fallback to the bundled Thai UI font so first-run Linux does not show missing Thai glyphs.
 
+## Native build results on GitHub
+
+All four native build targets and the interface tests passed in [run 39294623034](https://github.com/kengdesign/thai-font-kit/actions/runs/39294623034):
+
+- Windows x64 MSVC — NSIS .exe
+- macOS Apple Silicon — .dmg
+- macOS Intel — .dmg
+- Linux x64 — .deb and .AppImage
+- Playwright interface tests — 3 passed
+
+Native runner core tests passed on Windows, macOS and Linux. Installers were collected with SHA-256 checksum files. This verifies compilation, packaging and automated checks; it does not verify OS font activation or ArtCraft compatibility on real user machines.
+
+The alpha release pipeline is [run 39295035898](https://github.com/kengdesign/thai-font-kit/actions/runs/39295035898). It publishes only after the same native build matrix and interface tests succeed.
+
 ## Not yet completed
 
-- Full native Tauri compilation / installer creation: this authoring host lacks WebKitGTK / GTK development libraries; package installation is unavailable in the host. The GitHub workflow installs dependencies on its build runners.
-- GitHub workflow execution: repository `kengdesign/thai-font-kit` has been created by its owner. The initial source upload triggers the configured native build matrix; results will be recorded after completion.
-- Installer execution, OS font registration persistence, reboot behavior, uninstall while a font is in use, real PhotoCraft / VectorCraft / DesignCraft editing and export, code signing and notarization.
-- Windows MSVC and macOS Intel full build verification will run in the configured GitHub matrix.
+- Installer execution, OS font registration persistence, reboot behavior, uninstall while a font is in use, and real PhotoCraft / VectorCraft / DesignCraft editing and export.
+- Publisher code signing and macOS notarization.
 
-All public release claims must remain alpha until native builds and manual QA are completed. The source archive is not a desktop installer.
+Public installers remain explicitly labelled experimental Alpha. No stable release or ArtCraft compatibility guarantee is claimed.
