@@ -62,7 +62,9 @@ npm test
 
 Push `main` หรือกด Actions → Test and build desktop installers → Run workflow เพื่อ build สี่เป้าหมาย ดาวน์โหลดไฟล์จาก Artifacts หลังงานสำเร็จ ผล build ทุกระบบต้องเป็นสีเขียวก่อนทดสอบบนเครื่องจริง
 
-หลังทดสอบให้เปลี่ยนเลขเวอร์ชันใน `package.json`, `src-tauri/tauri.conf.json` และ Cargo packages พร้อมอัปเดต lockfiles แล้วสร้าง tag เช่น `v0.1.0` ระบบจะสร้าง **draft prerelease** พร้อม installers และ SHA256SUMS หลัง build ทุกเป้าหมายสำเร็จ ผู้ดูแลตรวจผลและ publish release จาก GitHub
+หลัง build จาก `main` ทุกเป้าหมายและการทดสอบหน้าจอสำเร็จ ระบบจะเผยแพร่ **Alpha prerelease สำหรับผู้ทดสอบ** พร้อม installers และ SHA256SUMS โดยใช้ tag `v<version>-alpha.<run number>` สามารถสร้าง version tag เองได้เช่นกัน ยังไม่ใช่ stable release
+
+ก่อนเปลี่ยนเวอร์ชัน ให้อัปเดต `package.json`, `src-tauri/tauri.conf.json` และ Cargo packages พร้อม lockfiles และผลทดสอบบนเครื่องจริง
 
 ดู [รายการตรวจรับ](docs/QA.md) และ [ข้อจำกัด / การออกแบบ](docs/ARCHITECTURE.md)
 

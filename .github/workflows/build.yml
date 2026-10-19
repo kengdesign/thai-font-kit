@@ -73,8 +73,8 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-  draft-release:
-    if: startsWith(github.ref, 'refs/tags/v')
+  alpha-release:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
     needs: [build, interface-tests]
     runs-on: ubuntu-latest
     permissions:
@@ -85,7 +85,14 @@ jobs:
         with:
           path: installers
           merge-multiple: true
-      - name: Create a draft prerelease for human review
+      - name: Publish an explicitly labelled alpha prerelease
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" installers/* --verify-tag --draft --prerelease --title "Thai Font Kit $GITHUB_REF_NAME (alpha)" --notes-file docs/RELEASE_NOTES.md
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            tag="$GITHUB_REF_NAME"
+          else
+            version=$(node -p "require('./package.json').version")
+            tag="v${version}-alpha.${GITHUB_RUN_NUMBER}"
+          fi
+          gh release create "$tag" installers/* --target "$GITHUB_SHA" --prerelease --title "Thai Font Kit $tag — ทดลองใช้งาน" --notes-file docs/RELEASE_NOTES.md

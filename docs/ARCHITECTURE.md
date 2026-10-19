@@ -4,7 +4,7 @@
 - `core/src/platform.rs`: Windows per-user Fonts directory + HKCU Fonts + GDI activation / WM_FONTCHANGE; macOS user Fonts + Core Text user scope; Linux XDG font directory + bounded fontconfig refresh.
 - `src-tauri`: five narrow commands; the frontend cannot supply filesystem paths or download URLs.
 - `src`: Thai UI with explicit font preview loading, confirmation dialogs and operation locking.
-- `.github/workflows/build.yml`: four native build targets, artifacts with checksums, draft prerelease on a version tag.
+- `.github/workflows/build.yml`: four native build targets, artifacts with checksums, explicitly labelled alpha prerelease after all main-branch builds pass.
 
 Font URLs are built from an embedded commit + family ID + filename, never user input. HTTP redirects are rejected and downloads are bounded to 16 MB / 60 seconds. Font bytes must match embedded SHA-256 and parse as a font containing representative Thai consonants and combining marks. This checks coverage, not shaping correctness.
 
