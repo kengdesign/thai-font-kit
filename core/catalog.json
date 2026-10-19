@@ -1,0 +1,595 @@
+{
+  "revision": "47d54ca1ebb14fd864695f1d39dc734f39017c33",
+  "families": [
+    {
+      "id": "sarabun",
+      "name": "Sarabun",
+      "description": "เอกสารและเนื้อหา",
+      "category": "SANS_SERIF",
+      "license": "Copyright 2018 The Sarabun Project Authors (https://github.com/cadsondemak/Sarabun)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "Sarabun-Regular.ttf",
+          "sha256": "226d4f368fbc0457990ddef2692679badfd2c1a4e89e5ac4d43c10ba7743b2f1",
+          "size": 90220,
+          "weight": 400,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-Light.ttf",
+          "sha256": "9efd75e5ebb6d7755cca3faa5906c77a4bbd39c9aac0ed23bf7f4ba33b02f688",
+          "size": 90440,
+          "weight": 300,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-Medium.ttf",
+          "sha256": "cc7c3016daab3321674fdf6e2ef59850dc0c07503de1cbdb8b90fe8080ada2b4",
+          "size": 90292,
+          "weight": 500,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-ExtraLight.ttf",
+          "sha256": "8aa9fba8885554545c7bce3f1db5efd914c74c0ce8ae58e9e4cb477b5824fe9d",
+          "size": 90484,
+          "weight": 200,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-SemiBold.ttf",
+          "sha256": "c0bb057d86e4a12097d701ac0953597e315788d47a446f5b63a6604ab21dceba",
+          "size": 90200,
+          "weight": 600,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-Thin.ttf",
+          "sha256": "fa55eab332e998acb4bb64c43d9bd1cef791d88d5d15d63570f43741688d7057",
+          "size": 90588,
+          "weight": 100,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-Bold.ttf",
+          "sha256": "d38308ca27d067b9a1b79006337c1f9a66c29aa016d96a9d88d3801da7fa83b9",
+          "size": 89804,
+          "weight": 700,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-ExtraBold.ttf",
+          "sha256": "1f4ba0daad63c802d825885341bd7f1f054306a669ea2b183f2b20ee65a0a043",
+          "size": 89884,
+          "weight": 800,
+          "italic": false
+        },
+        {
+          "filename": "Sarabun-Italic.ttf",
+          "sha256": "595a968e97a8b8179a6bde2d74d4f91b11475dcfb6cf270037d76d8ed71160ea",
+          "size": 93248,
+          "weight": 400,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-LightItalic.ttf",
+          "sha256": "50c12a64ff7fb67fa7ca525c2ed2def9660c97c3ca443acea622e35beee97c33",
+          "size": 93296,
+          "weight": 300,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-MediumItalic.ttf",
+          "sha256": "263e6bb51d80c228c201a0770e6100181115119fdca7968445d44d2fb94ab009",
+          "size": 93428,
+          "weight": 500,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-ExtraLightItalic.ttf",
+          "sha256": "c2da92eae4674589bfb7ec04ecb5041c0bbe7768adf65fdddcfc1c9af3bbbb2f",
+          "size": 93612,
+          "weight": 200,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-SemiBoldItalic.ttf",
+          "sha256": "982bd56d4683c60e7e4c9cd84bfafae7b700c4b514d9655b8810bb7478063e5c",
+          "size": 93352,
+          "weight": 600,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-ThinItalic.ttf",
+          "sha256": "c520d004674d257f4e539926c04ec9b77cbab2239aaa2b468df9693a369bb884",
+          "size": 93616,
+          "weight": 100,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-BoldItalic.ttf",
+          "sha256": "5ef1b930f9a3afed5ec83374b5617cad3a89d91a8fc5e372dc028c2aa2950f8d",
+          "size": 92948,
+          "weight": 700,
+          "italic": true
+        },
+        {
+          "filename": "Sarabun-ExtraBoldItalic.ttf",
+          "sha256": "4b699f0ae018a58df04bd2a2a7c37d71c29c5359cb9df48abc70210ba2564ef9",
+          "size": 92820,
+          "weight": 800,
+          "italic": true
+        }
+      ]
+    },
+    {
+      "id": "notosansthai",
+      "name": "Noto Sans Thai",
+      "description": "อ่านง่าย ใช้งานทั่วไป",
+      "category": "SANS_SERIF",
+      "license": "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/thai)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttps://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "NotoSansThai[wdth,wght].ttf",
+          "sha256": "5a1c559bb539583c8a1fd99d1c5b9491e5e14478c9cd2bd0970d5c3096cc9ef8",
+          "size": 218652,
+          "weight": 400,
+          "italic": false
+        }
+      ]
+    },
+    {
+      "id": "notoserifthai",
+      "name": "Noto Serif Thai",
+      "description": "บทความและงานทางการ",
+      "category": "SERIF",
+      "license": "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/thai)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttps://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "NotoSerifThai[wdth,wght].ttf",
+          "sha256": "34a7ad11647c845303aabdde639059806c56b84719e5d2ceb28eb038711bdf53",
+          "size": 292188,
+          "weight": 400,
+          "italic": false
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "name": "Prompt",
+      "description": "หัวข้อและงานแบรนด์",
+      "category": "SANS_SERIF",
+      "license": "Copyright (c) 2015, Cadson Demak (info@cadsondemak.com)\r\n\r\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\r\nThis license is copied below, and is also available with a FAQ at:\r\nhttp://scripts.sil.org/OFL\r\n\r\n\r\n-----------------------------------------------------------\r\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\r\n-----------------------------------------------------------\r\n\r\nPREAMBLE\r\nThe goals of the Open Font License (OFL) are to stimulate worldwide\r\ndevelopment of collaborative font projects, to support the font creation\r\nefforts of academic and linguistic communities, and to provide a free and\r\nopen framework in which fonts may be shared and improved in partnership\r\nwith others.\r\n\r\nThe OFL allows the licensed fonts to be used, studied, modified and\r\nredistributed freely as long as they are not sold by themselves. The\r\nfonts, including any derivative works, can be bundled, embedded, \r\nredistributed and/or sold with any software provided that any reserved\r\nnames are not used by derivative works. The fonts and derivatives,\r\nhowever, cannot be released under any other type of license. The\r\nrequirement for fonts to remain under this license does not apply\r\nto any document created using the fonts or their derivatives.\r\n\r\nDEFINITIONS\r\n\"Font Software\" refers to the set of files released by the Copyright\r\nHolder(s) under this license and clearly marked as such. This may\r\ninclude source files, build scripts and documentation.\r\n\r\n\"Reserved Font Name\" refers to any names specified as such after the\r\ncopyright statement(s).\r\n\r\n\"Original Version\" refers to the collection of Font Software components as\r\ndistributed by the Copyright Holder(s).\r\n\r\n\"Modified Version\" refers to any derivative made by adding to, deleting,\r\nor substituting -- in part or in whole -- any of the components of the\r\nOriginal Version, by changing formats or by porting the Font Software to a\r\nnew environment.\r\n\r\n\"Author\" refers to any designer, engineer, programmer, technical\r\nwriter or other person who contributed to the Font Software.\r\n\r\nPERMISSION & CONDITIONS\r\nPermission is hereby granted, free of charge, to any person obtaining\r\na copy of the Font Software, to use, study, copy, merge, embed, modify,\r\nredistribute, and sell modified and unmodified copies of the Font\r\nSoftware, subject to the following conditions:\r\n\r\n1) Neither the Font Software nor any of its individual components,\r\nin Original or Modified Versions, may be sold by itself.\r\n\r\n2) Original or Modified Versions of the Font Software may be bundled,\r\nredistributed and/or sold with any software, provided that each copy\r\ncontains the above copyright notice and this license. These can be\r\nincluded either as stand-alone text files, human-readable headers or\r\nin the appropriate machine-readable metadata fields within text or\r\nbinary files as long as those fields can be easily viewed by the user.\r\n\r\n3) No Modified Version of the Font Software may use the Reserved Font\r\nName(s) unless explicit written permission is granted by the corresponding\r\nCopyright Holder. This restriction only applies to the primary font name as\r\npresented to the users.\r\n\r\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r\nSoftware shall not be used to promote, endorse or advertise any\r\nModified Version, except to acknowledge the contribution(s) of the\r\nCopyright Holder(s) and the Author(s) or with their explicit written\r\npermission.\r\n\r\n5) The Font Software, modified or unmodified, in part or in whole,\r\nmust be distributed entirely under this license, and must not be\r\ndistributed under any other license. The requirement for fonts to\r\nremain under this license does not apply to any document created\r\nusing the Font Software.\r\n\r\nTERMINATION\r\nThis license becomes null and void if any of the above conditions are\r\nnot met.\r\n\r\nDISCLAIMER\r\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\r\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\r\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\r\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\r\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\r\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\r\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\r\nOTHER DEALINGS IN THE FONT SOFTWARE.\r\n",
+      "files": [
+        {
+          "filename": "Prompt-Regular.ttf",
+          "sha256": "dbd497803cec3caffbc6b7f599ca6fed8beea0ed7e0ad1e098130c5ebbc4fd42",
+          "size": 168932,
+          "weight": 400,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Light.ttf",
+          "sha256": "79412cf5ef7f60d7f1dff4e178707b0bc662dd76608697a7a36b4769454f8b82",
+          "size": 161980,
+          "weight": 300,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Medium.ttf",
+          "sha256": "6a42451be692eba473c639f4bcdc6c6d9160a3d632319a64287e3ed1fae15d6b",
+          "size": 176444,
+          "weight": 500,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-ExtraLight.ttf",
+          "sha256": "5492f48c746a6f725ad21a787bb49ec4e948dbed7a3fa1e357b0efc1eef8d881",
+          "size": 163680,
+          "weight": 200,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-SemiBold.ttf",
+          "sha256": "3285c9e6a4ebc480a6476a1a26b44d6eb0f9874025fa96e42afd52172b7f02b9",
+          "size": 175300,
+          "weight": 600,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Thin.ttf",
+          "sha256": "a389f077b15b3eae6681d4824ee04bc081dbe0ebdcc160ab65a3282171608b1e",
+          "size": 164456,
+          "weight": 100,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Bold.ttf",
+          "sha256": "02813ca4f93c1df27e271f10fef3db6e34e66751ae1f4a3ed82ae06cb20150ea",
+          "size": 178804,
+          "weight": 700,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-ExtraBold.ttf",
+          "sha256": "f19ebea740940d6c6eb080d5ede1c78e5e68bd5b1faa34efbac251bb84740100",
+          "size": 176172,
+          "weight": 800,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Black.ttf",
+          "sha256": "4fbb63f90ce9ea4214461942b521b13f6d2f7194a67de848363d829c3fdf3e66",
+          "size": 176388,
+          "weight": 900,
+          "italic": false
+        },
+        {
+          "filename": "Prompt-Italic.ttf",
+          "sha256": "c1188176de49e376990dff829c1bc0d686b17df96dd465f9e9368ccb2f2883cd",
+          "size": 179208,
+          "weight": 400,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-LightItalic.ttf",
+          "sha256": "58a64e6d2d3a2e37f0f488f68995f458a5e2b6c15fa0b2cd07e5b38fb613f45f",
+          "size": 173496,
+          "weight": 300,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-MediumItalic.ttf",
+          "sha256": "e2cf416eeb5cd1f2f57ddaab7b05b9dae81178aac8f43bf8a77263f5217a104c",
+          "size": 183936,
+          "weight": 500,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-ExtraLightItalic.ttf",
+          "sha256": "19236c1e38938799c326ceb78ad55712b6f13bccacdd0561292a8368803f03b1",
+          "size": 175300,
+          "weight": 200,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-SemiBoldItalic.ttf",
+          "sha256": "f01838c433f60813dfbdcd7f2c935169011298f0d621c318ca8e352d776c8354",
+          "size": 185108,
+          "weight": 600,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-ThinItalic.ttf",
+          "sha256": "5c3c28a7210430ff457279b4cb57d0d444d0d0b21d5465e556e6a068a9d8630b",
+          "size": 176092,
+          "weight": 100,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-BoldItalic.ttf",
+          "sha256": "d1c26068cd1291d238c04a064e169ce867315aab256bf7bd12cbe0969bb36b3a",
+          "size": 186428,
+          "weight": 700,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-ExtraBoldItalic.ttf",
+          "sha256": "23560ab8e908c1041befa0ac6873fbaa710de6d0ae21bc60c5b2fdedd83eeb86",
+          "size": 186668,
+          "weight": 800,
+          "italic": true
+        },
+        {
+          "filename": "Prompt-BlackItalic.ttf",
+          "sha256": "b1b27215efa6a451c2a1549c5de4c96bb389cf89e86921b3ee488ddb6702e09a",
+          "size": 199068,
+          "weight": 900,
+          "italic": true
+        }
+      ]
+    },
+    {
+      "id": "kanit",
+      "name": "Kanit",
+      "description": "แบนเนอร์และหัวข้อ",
+      "category": "SANS_SERIF",
+      "license": "Copyright 2020 The Kanit Project Authors (https://github.com/cadsondemak/kanit)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "Kanit-Regular.ttf",
+          "sha256": "27170c049660b2f962d3ed28441fd20f4c743503ca031fec9c2b4542d6c52736",
+          "size": 173148,
+          "weight": 400,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Light.ttf",
+          "sha256": "7c04b0be6011782fcc4c032f4033ef6f6ba1fef99b135ba1ee68b800c53017ec",
+          "size": 171384,
+          "weight": 300,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Medium.ttf",
+          "sha256": "50a237034244026a7c63fe55e24e0b4298babe363cde043e032075b764c545a2",
+          "size": 174628,
+          "weight": 500,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-ExtraLight.ttf",
+          "sha256": "f90e440b41170f2f75f2930d3273dbe9ed7a5ac49f7dbdc375ba5f8d2e224745",
+          "size": 164140,
+          "weight": 200,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-SemiBold.ttf",
+          "sha256": "67e64baf1a7e6e076435518ff0e6bf25c4d74b98143cd1a2688db906c0abce11",
+          "size": 174796,
+          "weight": 600,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Thin.ttf",
+          "sha256": "740d8a4d92ddae394d13a3caea845c048b6d62b58f9fb92ed4ac0118ed38c083",
+          "size": 160460,
+          "weight": 100,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Bold.ttf",
+          "sha256": "5dec5b080dab13de9d2295437c0ff3ec05c9e75587dfc31358c005eb4efa5e70",
+          "size": 176136,
+          "weight": 700,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-ExtraBold.ttf",
+          "sha256": "70082870d1f5bb6ae9faa708572b2c36de3c076caae187edae753f709d0de984",
+          "size": 177836,
+          "weight": 800,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Black.ttf",
+          "sha256": "5d290c2cc9926764bd782aa6abc47a8f55bd64641d0afb56e115ee522698ee7e",
+          "size": 176856,
+          "weight": 900,
+          "italic": false
+        },
+        {
+          "filename": "Kanit-Italic.ttf",
+          "sha256": "7cbe69393a7bf948dd49e575369344a907f06b0182e7a618c033c67208abb27d",
+          "size": 175160,
+          "weight": 400,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-LightItalic.ttf",
+          "sha256": "e5cd0a7ce9ce65b7be59287320d247b7627b0a437a6a3bd1174440ceed4af1c6",
+          "size": 174936,
+          "weight": 300,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-MediumItalic.ttf",
+          "sha256": "266a8044e599ce2feef7dffa8e3ce7648c94927daba20c4838629054633cf8c4",
+          "size": 175444,
+          "weight": 500,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-ExtraLightItalic.ttf",
+          "sha256": "e62305565471f6ef1139581e2afbcd0b108fc2a8b140052cd06ec2852aad9cf9",
+          "size": 168260,
+          "weight": 200,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-SemiBoldItalic.ttf",
+          "sha256": "df1f635f3022306a7f61ed03cdc1a90364f31e19454bd287cffe45f98ca805d0",
+          "size": 175508,
+          "weight": 600,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-ThinItalic.ttf",
+          "sha256": "6f61a638ba025b495fbf23a05f96af31ae3e9ca710506da123e3d63abdcf7d40",
+          "size": 165048,
+          "weight": 100,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-BoldItalic.ttf",
+          "sha256": "194d26ba90b782465bd4653cc5a1cdf7a9bed7b9e271df4f6fb41b5dba359d78",
+          "size": 183656,
+          "weight": 700,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-ExtraBoldItalic.ttf",
+          "sha256": "e874a96de66b5340174ddf9c621593280a21e9adb8e07bb1587112de274acad5",
+          "size": 188372,
+          "weight": 800,
+          "italic": true
+        },
+        {
+          "filename": "Kanit-BlackItalic.ttf",
+          "sha256": "7fe3f1d87e33e165eae2d664e42a31faf542d24e431a2e7da36f4e4eee5f8529",
+          "size": 185464,
+          "weight": 900,
+          "italic": true
+        }
+      ]
+    },
+    {
+      "id": "anuphan",
+      "name": "Anuphan",
+      "description": "หน้าจอและงานสมัยใหม่",
+      "category": "SANS_SERIF",
+      "license": "Copyright 2019 The Anuphan Project Authors (https://github.com/cadsondemak/Anuphan)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttps://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "Anuphan[wght].ttf",
+          "sha256": "7ec47ebcaa9d6459d974691cbb42fae52e1449478a607b071bfaf3ccdb433ce4",
+          "size": 231712,
+          "weight": 400,
+          "italic": false
+        }
+      ]
+    },
+    {
+      "id": "baijamjuree",
+      "name": "Bai Jamjuree",
+      "description": "งานออกแบบและเนื้อหา",
+      "category": "SANS_SERIF",
+      "license": "Copyright 2018 Bai Jamjuree (https://github.com/cadsondemak/Bai-Jamjuree)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n",
+      "files": [
+        {
+          "filename": "BaiJamjuree-Regular.ttf",
+          "sha256": "72b5a30cb78966823eb326c09b9004b0d03b4bddcdfcfd1b8cdbffb6c414547d",
+          "size": 82112,
+          "weight": 400,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-Light.ttf",
+          "sha256": "8db41d9372b7425e7c717ba7bd3883965bada642412bccc0545102f9024d6acb",
+          "size": 82208,
+          "weight": 300,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-Medium.ttf",
+          "sha256": "95782f3c3e07866749fb28e1d1a356e383e8f2bdcc7b88d4e3a3fc546613137f",
+          "size": 82292,
+          "weight": 500,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-ExtraLight.ttf",
+          "sha256": "da49f9d1efd6f190ac444af02a25606c0cd38fc78d4fc1e459d8e0171b65af11",
+          "size": 81880,
+          "weight": 200,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-SemiBold.ttf",
+          "sha256": "daaa68bc721e893861f948f40542b9f1ea8496a3fe4250a0ffc86dab0aee8f3c",
+          "size": 82316,
+          "weight": 600,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-Bold.ttf",
+          "sha256": "74784411504a295a5255e736e0a8389892af2c8a14e914d3e194329b59279223",
+          "size": 81840,
+          "weight": 700,
+          "italic": false
+        },
+        {
+          "filename": "BaiJamjuree-Italic.ttf",
+          "sha256": "96e5f86f49442f60fd72cfc7728fde740870cccd3b8bc8a30e75dd8d9fc4b3b4",
+          "size": 87608,
+          "weight": 400,
+          "italic": true
+        },
+        {
+          "filename": "BaiJamjuree-LightItalic.ttf",
+          "sha256": "78e092d9c144538e575da8242888de255e02897eab0a86d75e4bc1e6b33d82fb",
+          "size": 87664,
+          "weight": 300,
+          "italic": true
+        },
+        {
+          "filename": "BaiJamjuree-MediumItalic.ttf",
+          "sha256": "f37dc3ccb6597e851e7c23fed94e6ab0df9668fb5c5d166360e81c00dd84b0bc",
+          "size": 87888,
+          "weight": 500,
+          "italic": true
+        },
+        {
+          "filename": "BaiJamjuree-ExtraLightItalic.ttf",
+          "sha256": "4dfac6888704172ca10ee1986d6de89de820a29310b489282b879b69f0304128",
+          "size": 87492,
+          "weight": 200,
+          "italic": true
+        },
+        {
+          "filename": "BaiJamjuree-SemiBoldItalic.ttf",
+          "sha256": "cdc9cd3c2f168d1791871b72b5d62bfed7a5b87efec1bb0ba356f7fad6d623fd",
+          "size": 87760,
+          "weight": 600,
+          "italic": true
+        },
+        {
+          "filename": "BaiJamjuree-BoldItalic.ttf",
+          "sha256": "afeefa87666738ec8689bb018dfc971a532c8fd9e8cba649d1be0176759d93c1",
+          "size": 87264,
+          "weight": 700,
+          "italic": true
+        }
+      ]
+    },
+    {
+      "id": "ibmplexsansthai",
+      "name": "IBM Plex Sans Thai",
+      "description": "เว็บไซต์และงานธุรกิจ",
+      "category": "SANS_SERIF",
+      "license": "Copyright © 2017 IBM Corp. with Reserved Font Name \"Plex\"\r\n\r\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\r\n\r\nThis license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL\r\n\r\n\r\n-----------------------------------------------------------\r\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\r\n-----------------------------------------------------------\r\n\r\nPREAMBLE\r\nThe goals of the Open Font License (OFL) are to stimulate worldwide\r\ndevelopment of collaborative font projects, to support the font creation\r\nefforts of academic and linguistic communities, and to provide a free and\r\nopen framework in which fonts may be shared and improved in partnership\r\nwith others.\r\n\r\nThe OFL allows the licensed fonts to be used, studied, modified and\r\nredistributed freely as long as they are not sold by themselves. The\r\nfonts, including any derivative works, can be bundled, embedded, \r\nredistributed and/or sold with any software provided that any reserved\r\nnames are not used by derivative works. The fonts and derivatives,\r\nhowever, cannot be released under any other type of license. The\r\nrequirement for fonts to remain under this license does not apply\r\nto any document created using the fonts or their derivatives.\r\n\r\nDEFINITIONS\r\n\"Font Software\" refers to the set of files released by the Copyright\r\nHolder(s) under this license and clearly marked as such. This may\r\ninclude source files, build scripts and documentation.\r\n\r\n\"Reserved Font Name\" refers to any names specified as such after the\r\ncopyright statement(s).\r\n\r\n\"Original Version\" refers to the collection of Font Software components as\r\ndistributed by the Copyright Holder(s).\r\n\r\n\"Modified Version\" refers to any derivative made by adding to, deleting,\r\nor substituting -- in part or in whole -- any of the components of the\r\nOriginal Version, by changing formats or by porting the Font Software to a\r\nnew environment.\r\n\r\n\"Author\" refers to any designer, engineer, programmer, technical\r\nwriter or other person who contributed to the Font Software.\r\n\r\nPERMISSION & CONDITIONS\r\nPermission is hereby granted, free of charge, to any person obtaining\r\na copy of the Font Software, to use, study, copy, merge, embed, modify,\r\nredistribute, and sell modified and unmodified copies of the Font\r\nSoftware, subject to the following conditions:\r\n\r\n1) Neither the Font Software nor any of its individual components,\r\nin Original or Modified Versions, may be sold by itself.\r\n\r\n2) Original or Modified Versions of the Font Software may be bundled,\r\nredistributed and/or sold with any software, provided that each copy\r\ncontains the above copyright notice and this license. These can be\r\nincluded either as stand-alone text files, human-readable headers or\r\nin the appropriate machine-readable metadata fields within text or\r\nbinary files as long as those fields can be easily viewed by the user.\r\n\r\n3) No Modified Version of the Font Software may use the Reserved Font\r\nName(s) unless explicit written permission is granted by the corresponding\r\nCopyright Holder. This restriction only applies to the primary font name as\r\npresented to the users.\r\n\r\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\r\nSoftware shall not be used to promote, endorse or advertise any\r\nModified Version, except to acknowledge the contribution(s) of the\r\nCopyright Holder(s) and the Author(s) or with their explicit written\r\npermission.\r\n\r\n5) The Font Software, modified or unmodified, in part or in whole,\r\nmust be distributed entirely under this license, and must not be\r\ndistributed under any other license. The requirement for fonts to\r\nremain under this license does not apply to any document created\r\nusing the Font Software.\r\n\r\nTERMINATION\r\nThis license becomes null and void if any of the above conditions are\r\nnot met.\r\n\r\nDISCLAIMER\r\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\r\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\r\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\r\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\r\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\r\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\r\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\r\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\r\nOTHER DEALINGS IN THE FONT SOFTWARE.\r\n",
+      "files": [
+        {
+          "filename": "IBMPlexSansThai-Regular.ttf",
+          "sha256": "eee061d1bac39be40f9bb94498898cd1894f5d3d9a2f0ee6cbd48a6bd03d052b",
+          "size": 116004,
+          "weight": 400,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-Light.ttf",
+          "sha256": "b8e2da56ec11f1965af59a7119ee0b9b78773a9c9a89ae049b4975c9197b5c8d",
+          "size": 118380,
+          "weight": 300,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-Medium.ttf",
+          "sha256": "46ba1b7365cc2c583914f23914cce46e836a72662e34f6e3029b15aaa10b792e",
+          "size": 116304,
+          "weight": 500,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-ExtraLight.ttf",
+          "sha256": "b1ba0c97d959657832c1a0929c274e4d4d8128ca2c52d24c6835cf87fb4a5a04",
+          "size": 119896,
+          "weight": 200,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-SemiBold.ttf",
+          "sha256": "9d7526a0c8dfad63c49815d0cce9eea1026f018468b81c579997e953620a67d3",
+          "size": 116484,
+          "weight": 600,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-Thin.ttf",
+          "sha256": "65f2cd4ed6f23048622bba1a1062c05c2ff80e603d202fdccf303cf3d5d085e5",
+          "size": 120904,
+          "weight": 100,
+          "italic": false
+        },
+        {
+          "filename": "IBMPlexSansThai-Bold.ttf",
+          "sha256": "f88fbe0a3717c93deddf4b13e50a05c9adcd38f58d675d9d5d0b869961851667",
+          "size": 116552,
+          "weight": 700,
+          "italic": false
+        }
+      ]
+    }
+  ]
+}

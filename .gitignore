@@ -1,0 +1,10 @@
+node_modules/
+dist/
+target/
+.DS_Store
+*.log
+.catalog-cache/
+test-results/
+playwright-report/
+artifacts/
+__pycache__/
