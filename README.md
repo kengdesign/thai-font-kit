@@ -1,10 +1,58 @@
 # Thai Font Kit
 
-แอปโอเพนซอร์สสำหรับเลือก ทดลอง และติดตั้ง Google Fonts ภาษาไทยลงเครื่อง
+**ฟอนต์ไทย 34 ตระกูล เลือก ทดลอง และติดตั้งได้ในแอปเดียว**
 
-**สถานะ: 0.2.0 Alpha — ตัวติดตั้งผ่าน GitHub Actions ทั้ง Windows, macOS และ Linux; ยังต้องทดสอบการใช้งานจริงกับโปรแกรมออกแบบ**
+ใช้งานฟรี · โอเพนซอร์ส · ดาวน์โหลดได้โดยไม่ต้องมีบัญชี GitHub
 
-[ดาวน์โหลดรุ่น Alpha](https://github.com/kengdesign/thai-font-kit/releases) · [ดูผล build](https://github.com/kengdesign/thai-font-kit/actions)
+<a id="download"></a>
+
+## ดาวน์โหลดและติดตั้ง
+
+เลือกปุ่มให้ตรงกับเครื่องของคุณ **คลิกเพื่อดาวน์โหลดไฟล์ แล้วเปิดไฟล์เพื่อติดตั้ง**
+
+**เวอร์ชัน 0.2.0 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
+
+### Windows
+
+[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_x64-setup.exe)
+
+สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.42 MB**<br>
+เปิดไฟล์ `.exe` ที่ดาวน์โหลด แล้วทำตามขั้นตอนบนหน้าจอ
+
+### macOS
+
+[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_x64.dmg)
+
+- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.75 MB
+- **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 2.90 MB
+
+ตรวจชนิดชิปได้ที่เมนู Apple → **เกี่ยวกับ Mac เครื่องนี้ / About This Mac**<br>
+เปิดไฟล์ `.dmg` แล้วลาก **Thai Font Kit** ไปไว้ใน **Applications** · รองรับ macOS 11 ขึ้นไป
+
+### Linux
+
+[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_amd64.AppImage)
+
+- **Ubuntu / Debian:** เลือก `.deb` · 2.84 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
+- **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.36 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
+
+Linux ต้องมี GTK / WebKitGTK 4.1 และแนะนำ fontconfig; AppImage อาจต้องมี FUSE ตามระบบที่ใช้
+
+## เริ่มใช้งานใน 3 ขั้นตอน
+
+1. เปิด **Thai Font Kit** แล้วค้นหาฟอนต์ที่ชอบ
+2. กด **ทดลองฟอนต์** เพื่อดูข้อความของคุณ หรือกด **ติดตั้งฟอนต์นี้**
+3. ปิดแล้วเปิดโปรแกรมออกแบบอีกครั้ง เพื่อโหลดรายชื่อฟอนต์ที่ติดตั้ง
+
+แอปดาวน์โหลดเฉพาะฟอนต์ที่เลือก หลังติดตั้งแล้วใช้ฟอนต์แบบออฟไลน์ได้<br>
+[ดูรายชื่อฟอนต์ทั้ง 34 ตระกูล](docs/FONTS.md) · [ดูรุ่นอื่นและไฟล์ตรวจสอบ SHA-256](https://github.com/kengdesign/thai-font-kit/releases)
+
+**หมายเหตุรุ่นทดลอง:** ยังไม่ได้เซ็นใบรับรอง Windows / macOS จึงอาจมีข้อความเตือนจากระบบ และยังต้องทดสอบการใช้ฟอนต์กับโปรแกรมออกแบบแต่ละตัว การกดปุ่มดาวน์โหลดจะไม่ติดตั้งโปรแกรมอัตโนมัติบนเครื่อง
+
+---
+
+<details>
+<summary><strong>สำหรับผู้พัฒนา: โค้ด ระบบ การทดสอบ และรายละเอียดเพิ่มเติม</strong></summary>
 
 รองรับเป้าหมาย Windows x64, macOS Apple Silicon / Intel และ Linux x64 ใช้ Tauri 2 + Rust และ WebView ของระบบ ไม่มีบัญชีผู้ใช้ ไม่มี telemetry ไม่มีบริการทำงานเบื้องหลัง และไม่มีระบบอัปเดตอัตโนมัติในรุ่นแรก
 
@@ -25,7 +73,7 @@
 
 ## ดาวน์โหลดและใช้งาน
 
-เมื่อมี release ที่ผ่านการตรวจสอบแล้ว ดาวน์โหลดไฟล์ให้ตรงกับระบบจากหน้า Releases ของ repository นี้
+ดาวน์โหลดตัวติดตั้งได้จากปุ่มด้านบน หรือจากหน้า Releases ของ repository นี้
 
 | ระบบ | ไฟล์เป้าหมาย |
 | --- | --- |
@@ -85,3 +133,6 @@ cargo test -p thai-font-kit-core
 โค้ด MIT; ฟอนต์ยังคงอยู่ภายใต้ SIL Open Font License ของแต่ละโครงการ ข้อความ OFL ฝังอยู่ใน catalog และบันทึกลงโฟลเดอร์ข้อมูลแอปเมื่อมีการติดตั้ง ชุดทดสอบมี Anuphan ที่มาพร้อม OFL ของตนเอง
 
 แอปส่งคำขอ HTTPS ไป `raw.githubusercontent.com` เฉพาะตอนดาวน์โหลดฟอนต์ที่ไม่มีในแคช ไม่ส่งข้อความที่ผู้ใช้ทดลองพิมพ์ ไม่ส่งรายการฟอนต์ และไม่ส่งไฟล์งานไปเซิร์ฟเวอร์
+
+
+</details>
