@@ -8,6 +8,8 @@ Save work and close any existing PhotoCraft window. Click **เปิด PhotoCr
 
 The launcher supplies `--control 17878 --control-token-file <app-local-data>/photocraft-bridge/control.token`. PhotoCraft creates the token. No automation read/write roots are granted. On Windows keep the token folder in your normal private user profile. Do not share the token file.
 
+Click **แผงเล็ก · อยู่ด้านหน้า** for a compact 460px-wide always-on-top companion, and click **กลับหน้าจอเต็ม** to restore the full view and stop keeping it on top. This does not embed into the editor.
+
 Open a document in that PhotoCraft window and select an editable text layer. Choose an installed font in Thai Font Kit and click **ใช้ใน PhotoCraft**. It applies the family to the whole active text layer, retaining text and other style attributes. Undo is in PhotoCraft. The companion does not save the document or replace its text.
 
 Install missing fonts before opening PhotoCraft. When PhotoCraft does not yet see a new font, save/close it and launch again through Thai Font Kit. The bridge refuses application when the requested family has no faces in PhotoCraft; no silent fallback.

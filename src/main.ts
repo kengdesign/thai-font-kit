@@ -14,6 +14,7 @@ let statuses: Status[] = [];
 let filter = 'all';
 let category = 'all';
 let connected = false;
+let compact = false;
 function readIds(key: string): string[] {
   try { const value: unknown = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter((id): id is string => typeof id === 'string' && fallbackCatalog.families.some(f => f.id === id)).slice(0, 34) : []; } catch { return []; }
 }
@@ -52,7 +53,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div id="notice" class="notice" role="status" aria-live="polite">กำลังเปิดคลังฟอนต์…</div>
     <section class="bridge-panel" aria-label="เชื่อมต่อ PhotoCraft">
       <div><strong>ใช้ฟอนต์ใน PhotoCraft <small>ทดลอง</small></strong><p id="bridge-status" role="status">บันทึกงานและปิด PhotoCraft เดิมก่อนเปิดผ่านปุ่มนี้ครั้งแรก</p></div>
-      <div class="bridge-actions"><button id="bridge-open" class="secondary">เปิด PhotoCraft และเชื่อมต่อ</button><button id="bridge-check" class="text-button">เชื่อมต่ออีกครั้ง</button><button id="bridge-select" class="text-button">เลือกโปรแกรมใหม่</button></div>
+      <div class="bridge-actions"><button id="compact" class="secondary">แผงเล็ก · อยู่ด้านหน้า</button><button id="bridge-open" class="secondary">เปิด PhotoCraft และเชื่อมต่อ</button><button id="bridge-check" class="text-button">เชื่อมต่ออีกครั้ง</button><button id="bridge-select" class="text-button">เลือกโปรแกรมใหม่</button></div>
       <details><summary>วิธีใช้ตัวเชื่อม</summary><p>ครั้งแรกเลือกไฟล์ PhotoCraft ที่ติดตั้งไว้ แอปจะเปิดให้พร้อมตัวเชื่อมในเครื่อง จากนั้นเปิดเอกสารและเลือกเลเยอร์ข้อความ กลับมาเลือกฟอนต์แล้วกด “ใช้ใน PhotoCraft” การเปลี่ยนฟอนต์ยังแก้ไขข้อความต่อได้ และย้อนกลับได้ใน PhotoCraft<br>หากเพิ่งติดตั้งฟอนต์ ให้บันทึกงาน ปิด PhotoCraft แล้วเปิดผ่านปุ่มนี้ใหม่ ตัวเชื่อมยังไม่ใช่แท็บที่ฝังใน PhotoCraft และไม่บันทึกเอกสารให้อัตโนมัติ</p></details>
     </section>
     <div class="workspace">
@@ -132,7 +133,7 @@ function detail() {
   const fontFamily = actual ? `"preview-${selected.id}"` : '"Thai Font Kit UI", sans-serif';
   el('sample').style.fontFamily = fontFamily;
   document.querySelector<HTMLElement>('.glyphs')!.style.fontFamily = fontFamily;
-  el('preview-state').textContent = actual ? `แสดงด้วย ${selected.name} จริง` : previewError || 'กำลังเตรียมตัวอย่างฟอนต์จริง…';
+  el('preview-state').textContent = actual ? `แสดงด้วย ${selected.name} จริง` : previewError || (native ? 'กำลังเตรียมตัวอย่างฟอนต์จริง…' : 'ตัวอย่างหน้าจอ — เปิดแอปเดสก์ท็อปเพื่อโหลดฟอนต์จริง');
   el('preview').textContent = actual ? 'โหลดตัวอย่างแล้ว ✓' : 'ลองโหลดตัวอย่างอีกครั้ง ↻';
   el('install-state').textContent = s.changed ? 'มีไฟล์ที่ถูกแก้ไข แอปจะไม่ลบหรือเขียนทับไฟล์นั้น' : s.installed ? `ติดตั้งผ่านแอปแล้ว ${s.installed}/${s.total} ไฟล์` : 'ติดตั้งสำหรับบัญชีผู้ใช้ปัจจุบัน';
   el('download-size').textContent = `รวมทุกน้ำหนัก ${size(selected.files.reduce((n, f) => n + f.size, 0))}`;
@@ -198,6 +199,11 @@ async function bridgeAction(action: 'open' | 'select' | 'check') {
   } catch (error) { connected = false; el('bridge-status').textContent = String(error); }
   finally { setBusy(false); }
 }
+el('compact').onclick = async () => {
+  if (!native || busy) return;
+  try { await invoke('companion_mode', { enabled: !compact }); compact = !compact; document.body.classList.toggle('compact', compact); el('compact').textContent = compact ? 'กลับหน้าจอเต็ม' : 'แผงเล็ก · อยู่ด้านหน้า'; }
+  catch (error) { message(String(error), true); }
+};
 el('bridge-open').onclick = () => { void bridgeAction('open'); };
 el('bridge-select').onclick = () => { void bridgeAction('select'); };
 el('bridge-check').onclick = () => { void bridgeAction('check'); };
@@ -230,7 +236,7 @@ async function init() {
     families = native ? (await invoke<{ families: Family[] }>('catalog')).families : fallbackCatalog.families;
     selected = families[0];
     if (native) { await refresh(); await preview(); }
-    else { for (const id of ['bridge-open', 'bridge-check', 'bridge-select']) el<HTMLButtonElement>(id).disabled = true; message('ตัวอย่างหน้าจอ — การทดลองและติดตั้งฟอนต์ใช้งานได้ในแอปเดสก์ท็อป'); renderList(); detail(); }
+    else { for (const id of ['bridge-open', 'bridge-check', 'bridge-select', 'compact']) el<HTMLButtonElement>(id).disabled = true; message('ตัวอย่างหน้าจอ — การทดลองและติดตั้งฟอนต์ใช้งานได้ในแอปเดสก์ท็อป'); renderList(); detail(); }
   } catch (error) { message(`เปิดคลังฟอนต์ไม่สำเร็จ: ${String(error)}`, true); }
 }
 void init();
