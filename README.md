@@ -12,54 +12,47 @@
 
 เลือกปุ่มให้ตรงกับเครื่องของคุณ **คลิกเพื่อดาวน์โหลดไฟล์ แล้วเปิดไฟล์เพื่อติดตั้ง**
 
-**เวอร์ชัน 0.3.1 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
+**เวอร์ชัน 0.4.0 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
 
-**รุ่นแก้ไขอาการค้าง:** ค้นหาและเลือกฟอนต์ได้ขณะรอพรีวิว · รอ PhotoCraft ไม่ล็อกงานฟอนต์ · จำกัดเวลารอและมีตัวจับเวลา · ลดการอัปเดตรายชื่อฟอนต์ซ้ำบน Windows
+**รุ่นใหม่:** ไอคอนแผ่นฟอนต์ซ้อน · ปุ่มส้มสดตัวอักษรขาว · ถอดตัวเชื่อมและขั้นตอนเลือก exe ของ PhotoCraft ออก
 
-**ฟีเจอร์:** ตัวเชื่อม PhotoCraft แบบทดลอง · โหมดแผงเล็กอยู่ด้านหน้า · รายการโปรด · หมวดฟอนต์ · รายการที่ใช้ล่าสุด
+พรีวิวอัตโนมัติ · รายการโปรด · หมวดฟอนต์ · ดูล่าสุด · ดาวน์โหลดเฉพาะฟอนต์ที่เลือก
 
 เลือกฟอนต์แล้วโหลดตัวอย่างจริงอัตโนมัติ · มีวงหมุนและจำนวนไฟล์ระหว่างติดตั้ง · ลบแคชซ้ำหลังติดตั้งสำเร็จ
 
-**อัปเดตจากรุ่นเก่า:** ปิด Thai Font Kit ก่อนเปิดตัวติดตั้งใหม่ แล้วตรวจรุ่น 0.3.1 ที่มุมล่างซ้าย
+**อัปเดตจากรุ่นเก่า:** ปิด Thai Font Kit ก่อนเปิดตัวติดตั้งใหม่ แล้วตรวจรุ่น 0.4.0 ที่มุมล่างซ้าย
 
 ### Windows
 
-[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.3.1-alpha.10/Thai.Font.Kit_0.3.1_x64-setup.exe)
+[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.4.0-alpha.11/Thai.Font.Kit_0.4.0_x64-setup.exe)
 
-สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.53 MB**<br>
+สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.43 MB**<br>
 เปิดไฟล์ `.exe` ที่ดาวน์โหลด แล้วทำตามขั้นตอนบนหน้าจอ
 
 ### macOS
 
-[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.3.1-alpha.10/Thai.Font.Kit_0.3.1_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.3.1-alpha.10/Thai.Font.Kit_0.3.1_x64.dmg)
+[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.4.0-alpha.11/Thai.Font.Kit_0.4.0_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.4.0-alpha.11/Thai.Font.Kit_0.4.0_x64.dmg)
 
-- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.90 MB
-- **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 3.05 MB
+- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.76 MB
+- **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 2.91 MB
 
 ตรวจชนิดชิปได้ที่เมนู Apple → **เกี่ยวกับ Mac เครื่องนี้ / About This Mac**<br>
 เปิดไฟล์ `.dmg` แล้วลาก **Thai Font Kit** ไปไว้ใน **Applications** · รองรับ macOS 11 ขึ้นไป
 
 ### Linux
 
-[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.3.1-alpha.10/Thai.Font.Kit_0.3.1_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.3.1-alpha.10/Thai.Font.Kit_0.3.1_amd64.AppImage)
+[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.4.0-alpha.11/Thai.Font.Kit_0.4.0_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.4.0-alpha.11/Thai.Font.Kit_0.4.0_amd64.AppImage)
 
-- **Ubuntu / Debian:** เลือก `.deb` · 2.98 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
-- **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.48 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
+- **Ubuntu / Debian:** เลือก `.deb` · 2.85 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
+- **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.37 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
 
 Linux ต้องมี GTK / WebKitGTK 4.1 และแนะนำ fontconfig; AppImage อาจต้องมี FUSE ตามระบบที่ใช้
 
-## ใช้ฟอนต์กับ PhotoCraft
+## ใช้กับโปรแกรมออกแบบ
 
-1. บันทึกงานและปิด PhotoCraft ที่เปิดอยู่ก่อน
-2. ใน Thai Font Kit กด **เปิด PhotoCraft และเชื่อมต่อ** แล้วเลือกไฟล์โปรแกรม PhotoCraft ที่ติดตั้งไว้ (เลือกครั้งแรกครั้งเดียว)
-3. ใน PhotoCraft เปิดเอกสารและเลือกเลเยอร์ข้อความ
-4. กลับมาเลือกฟอนต์ใน Thai Font Kit แล้วกด **ใช้ใน PhotoCraft →**
+ติดตั้งฟอนต์ใน Thai Font Kit แล้วปิดและเปิดโปรแกรมออกแบบอีกครั้ง จากนั้นเลือกชื่อฟอนต์จากเมนูของโปรแกรมนั้น
 
-กด **แผงเล็ก · อยู่ด้านหน้า** เพื่อวางหน้าต่างเลือกฟอนต์ข้าง PhotoCraft และกด **กลับหน้าจอเต็ม** เพื่อคืนหน้าต่างปกติ
-
-ตัวเชื่อมเป็นฟีเจอร์ทดลองในหน้าต่าง Thai Font Kit **ยังไม่ใช่แท็บที่ฝังใน PhotoCraft** ใช้กับเลเยอร์ข้อความทั้งเลเยอร์ โดยข้อความยังแก้ไขต่อได้ และย้อนกลับได้ใน PhotoCraft ไม่มีการบันทึกไฟล์งานอัตโนมัติ หาก PhotoCraft ยังไม่เห็นฟอนต์ที่เพิ่งติดตั้ง ให้บันทึกงาน ปิด แล้วเปิดผ่านปุ่มนี้ใหม่
-
-[วิธีเลือกโปรแกรม ข้อจำกัด และข้อมูลการทดสอบตัวเชื่อม](docs/PHOTOCRAFT.md)
+**รุ่นนี้ไม่มีตัวเชื่อม PhotoCraft และไม่ต้องหาไฟล์ exe** หมวดและรายการโปรดอยู่ภายใน Thai Font Kit ไม่ได้เพิ่มแท็บหรือกรองรายชื่อใน PhotoCraft การทำเมนูแบบ Photoshop ภายใน PhotoCraft ต้องแก้ PhotoCraft เอง
 
 ## เริ่มใช้งานใน 3 ขั้นตอน
 
