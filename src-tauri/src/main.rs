@@ -14,16 +14,28 @@ async fn font_status() -> Result<Vec<Status>, String> {
         .map_err(|e| e.to_string())?
 }
 #[tauri::command]
-async fn preview_font(id: String) -> Result<Vec<u8>, String> {
-    tauri::async_runtime::spawn_blocking(move || Manager::open()?.font_bytes(&id))
-        .await
-        .map_err(|e| e.to_string())?
+async fn preview_font(id: String) -> Result<tauri::ipc::Response, String> {
+    tauri::async_runtime::spawn_blocking(move || {
+        Manager::open()?
+            .font_bytes(&id)
+            .map(tauri::ipc::Response::new)
+    })
+    .await
+    .map_err(|e| e.to_string())?
 }
 #[tauri::command]
-async fn install_font(id: String) -> Result<Outcome, String> {
-    tauri::async_runtime::spawn_blocking(move || Manager::open()?.install(&id))
-        .await
-        .map_err(|e| e.to_string())?
+async fn install_font(
+    id: String,
+    on_progress: tauri::ipc::Channel<serde_json::Value>,
+) -> Result<Outcome, String> {
+    tauri::async_runtime::spawn_blocking(move || {
+        Manager::open()?.install_with_progress(&id, |phase, done, total| {
+            let _ =
+                on_progress.send(serde_json::json!({"phase": phase, "done": done, "total": total}));
+        })
+    })
+    .await
+    .map_err(|e| e.to_string())?
 }
 #[tauri::command]
 async fn uninstall_font(id: String) -> Result<Outcome, String> {

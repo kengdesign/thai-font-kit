@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/core';
+import { invoke, Channel } from '@tauri-apps/api/core';
 import fallbackCatalog from '../core/catalog.json';
 import './style.css';
 import appIcon from '../app-icon.svg';
@@ -15,6 +15,14 @@ let filter = 'all';
 let busy = false;
 let loaded = new Set<string>();
 let previewSequence = 0;
+let activeFace: FontFace | undefined;
+let previewError = '';
+function work(text: string, done?: number, total?: number) {
+  el('work-status').hidden = false;
+  el('work-text').textContent = text;
+  const bar = el<HTMLProgressElement>('work-progress');
+  if (total) { bar.max = total; bar.value = done ?? 0; } else { bar.removeAttribute('value'); }
+}
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <aside class="sidebar">
@@ -25,7 +33,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="nav" data-filter="installed"><span>✓</span>ติดตั้งผ่านแอปแล้ว <b id="installed-count">—</b></button>
     </nav>
     <div class="side-note"><span class="note-icon">↙</span><strong>เลือก • ทดลอง • ติดตั้ง</strong><p>ดาวน์โหลดเฉพาะฟอนต์ที่เลือก<br>ติดตั้งแล้วใช้งานออฟไลน์ได้</p></div>
-    <div class="side-bottom">OPEN SOURCE · v0.2.1 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
+    <div class="side-bottom">OPEN SOURCE · v0.2.2 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
   </aside>
   <main>
     <header><div class="eyebrow">MADE FOR THAI CREATORS</div><h1>ฟอนต์ไทยที่ใช่<br><span>พร้อมใช้ในเครื่องคุณ</span></h1><p>เลือกฟอนต์สำหรับงานชิ้นต่อไป ทดลองข้อความ แล้วติดตั้งได้ในไม่กี่คลิก</p><span class="badge">ใช้งานฟรี · ไม่ต้องสมัครสมาชิก</span></header>
@@ -44,6 +52,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="preview-foot"><span id="preview-state">กดทดลองฟอนต์เพื่อดาวน์โหลดตัวอย่างจริง</span><button id="preview" class="text-button">ทดลองฟอนต์ ↓</button></div>
         <div class="glyphs" aria-label="ชุดอักษรตัวอย่าง">ก ข ค ง จ · สระอิ สระอุ · น้ำ ผู้ใหญ่ เก้าอี้<br><span>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789 · ฿ ! ? @ #</span></div>
         <div class="install-info"><span id="install-state"></span><small id="download-size"></small></div>
+        <div id="work-status" class="work-status" role="status" aria-live="polite" hidden><span class="spinner" aria-hidden="true"></span><strong id="work-text"></strong><progress id="work-progress" aria-label="ความคืบหน้า"></progress></div>
         <div class="actions"><button id="install" class="primary">ติดตั้งฟอนต์นี้ <span>↓</span></button><button id="uninstall" class="secondary">ถอนฟอนต์</button></div>
         <p class="restart-note">หลังติดตั้ง ให้ปิดแล้วเปิดโปรแกรมออกแบบอีกครั้งเพื่อโหลดรายชื่อฟอนต์</p>
         <button id="license" class="license-button">ดูแหล่งที่มาและสัญญาอนุญาต OFL ↗</button>
@@ -62,7 +71,8 @@ function setBusy(value: boolean) {
   busy = value;
   document.querySelectorAll<HTMLButtonElement>('.nav, .font-card, #preview, #install, #uninstall').forEach(b => { b.disabled = value; });
   el<HTMLInputElement>('search').disabled = value;
-  if (!value) detail();
+  el('app').setAttribute('aria-busy', String(value));
+  if (!value) { el('work-status').hidden = true; detail(); }
 }
 function renderList() {
   const query = el<HTMLInputElement>('search').value.trim().toLowerCase();
@@ -79,7 +89,7 @@ function renderList() {
     const s = status(f);
     meta.textContent = s.changed ? 'พบไฟล์ที่ถูกแก้ไข' : s.installed === s.total ? '✓ ติดตั้งแล้ว' : s.installed ? `ติดตั้ง ${s.installed}/${s.total} ไฟล์` : `${f.files.length} ไฟล์ · ${size(f.files.reduce((n, file) => n + file.size, 0))}`;
     button.append(title, desc, meta);
-    button.onclick = () => { selected = f; previewSequence++; renderList(); detail(); };
+    button.onclick = () => { selected = f; previewSequence++; previewError = ''; renderList(); detail(); if (native) void preview(); };
     el('font-list').append(button);
   }
   if (!visible.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'ยังไม่มีฟอนต์ในรายการนี้'; el('font-list').append(p); }
@@ -97,8 +107,8 @@ function detail() {
   const fontFamily = actual ? `"preview-${selected.id}"` : '"Thai Font Kit UI", sans-serif';
   el('sample').style.fontFamily = fontFamily;
   document.querySelector<HTMLElement>('.glyphs')!.style.fontFamily = fontFamily;
-  el('preview-state').textContent = actual ? `แสดงด้วย ${selected.name} จริง` : 'กดทดลองฟอนต์เพื่อดาวน์โหลดตัวอย่างจริง';
-  el('preview').textContent = actual ? 'โหลดตัวอย่างแล้ว ✓' : 'ทดลองฟอนต์ ↓';
+  el('preview-state').textContent = actual ? `แสดงด้วย ${selected.name} จริง` : previewError || 'กำลังเตรียมตัวอย่างฟอนต์จริง…';
+  el('preview').textContent = actual ? 'โหลดตัวอย่างแล้ว ✓' : 'ลองโหลดตัวอย่างอีกครั้ง ↻';
   el('install-state').textContent = s.changed ? 'มีไฟล์ที่ถูกแก้ไข แอปจะไม่ลบหรือเขียนทับไฟล์นั้น' : s.installed ? `ติดตั้งผ่านแอปแล้ว ${s.installed}/${s.total} ไฟล์` : 'ติดตั้งสำหรับบัญชีผู้ใช้ปัจจุบัน';
   el('download-size').textContent = `รวมทุกน้ำหนัก ${size(selected.files.reduce((n, f) => n + f.size, 0))}`;
   el('install').textContent = s.installed === s.total ? 'ตรวจซ่อมการติดตั้ง ↻' : 'ติดตั้งฟอนต์นี้ ↓';
@@ -109,14 +119,20 @@ function detail() {
 async function refresh() { statuses = await invoke<Status[]>('font_status'); renderList(); detail(); }
 async function preview() {
   const f = selected; const seq = ++previewSequence;
-  setBusy(true); message(`กำลังดาวน์โหลดตัวอย่าง ${f.name}…`);
+  if (busy || loaded.has(f.id)) return;
+  setBusy(true); previewError = '';
+  el('sample').classList.add('preview-loading');
+  el('preview-state').textContent = `กำลังโหลดตัวอย่าง ${f.name}…`;
+  work(`กำลังโหลดตัวอย่าง ${f.name}…`);
+  message(`กำลังโหลดตัวอย่าง ${f.name}…`);
   try {
-    const bytes = await invoke<number[]>('preview_font', { id: f.id });
+    const bytes = await invoke<number[] | ArrayBuffer>('preview_font', { id: f.id });
     const face = await new FontFace(`preview-${f.id}`, new Uint8Array(bytes)).load();
-    document.fonts.add(face); loaded.add(f.id);
+    if (activeFace) document.fonts.delete(activeFace);
+    activeFace = face; loaded.clear(); document.fonts.add(face); loaded.add(f.id);
     if (seq === previewSequence) message(`พร้อมทดลอง ${f.name} — ยังไม่ได้ติดตั้งฟอนต์ลงเครื่อง`);
-  } catch (error) { message(String(error), true); }
-  finally { setBusy(false); }
+  } catch (error) { previewError = `โหลดตัวอย่าง ${f.name} ไม่สำเร็จ — ยังแสดงฟอนต์หน้าจอ กดลองอีกครั้ง`; message(`${previewError}: ${String(error)}`, true); }
+  finally { el('sample').classList.remove('preview-loading'); setBusy(false); }
 }
 let pending: (() => void) | undefined;
 function confirmAction(remove: boolean) {
@@ -128,8 +144,16 @@ function confirmAction(remove: boolean) {
 }
 async function changeFont(f: Family, remove: boolean) {
   setBusy(true); message(`${remove ? 'กำลังถอน' : 'กำลังดาวน์โหลดและติดตั้ง'} ${f.name}… กรุณารอสักครู่`);
+  work(`${remove ? 'กำลังถอน' : 'กำลังเตรียมติดตั้ง'} ${f.name}…`);
+  el('install').textContent = remove ? 'กำลังถอนฟอนต์…' : 'กำลังติดตั้ง…';
+  const onProgress = new Channel<{ phase: string; done: number; total: number }>();
+  onProgress.onmessage = ({ phase, done, total }) => {
+    const text = phase === 'download' ? `กำลังดาวน์โหลด ${f.name} · ไฟล์ ${done + 1}/${total}` : phase === 'install' ? `กำลังติดตั้ง ${f.name} · ไฟล์ ${done + 1}/${total}` : 'กำลังอัปเดตรายชื่อฟอนต์ในระบบ…';
+    work(text, phase === 'install' ? total + done : phase === 'refresh' ? total * 2 : done, total * 2);
+    message(text);
+  };
   try {
-    const result = await invoke<Outcome>(remove ? 'uninstall_font' : 'install_font', { id: f.id });
+    const result = await invoke<Outcome>(remove ? 'uninstall_font' : 'install_font', { id: f.id, onProgress });
     message(`${remove ? 'ถอน' : 'ติดตั้ง'} ${f.name} แล้ว ${result.count} ไฟล์${result.warning ? ` · ${result.warning}` : ' · ปิดแล้วเปิดโปรแกรมออกแบบอีกครั้ง'}`);
   } catch (error) { message(String(error), true); }
   finally {
@@ -159,7 +183,7 @@ async function init() {
   try {
     families = native ? (await invoke<{ families: Family[] }>('catalog')).families : fallbackCatalog.families;
     selected = families[0];
-    if (native) { await refresh(); message('เลือกฟอนต์แล้วกดทดลอง หรือติดตั้งเพื่อใช้งานในเครื่อง'); }
+    if (native) { await refresh(); await preview(); }
     else { message('ตัวอย่างหน้าจอ — การทดลองและติดตั้งฟอนต์ใช้งานได้ในแอปเดสก์ท็อป'); renderList(); detail(); }
   } catch (error) { message(`เปิดคลังฟอนต์ไม่สำเร็จ: ${String(error)}`, true); }
 }

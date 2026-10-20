@@ -224,7 +224,12 @@ impl<P: Platform> Manager<P> {
                 let mut installed = 0;
                 let mut changed = 0;
                 for receipt in receipts.files.iter().filter(|r| r.family == family.id) {
-                    let path = self.owned(receipt)?;
+                    let font = family
+                        .files
+                        .iter()
+                        .find(|f| f.filename == receipt.filename && f.sha256 == receipt.sha256)
+                        .ok_or("Unrecognized installation record. No files were changed.")?;
+                    let path = self.destination(&family.id, font);
                     if Self::matches(&path, &receipt.sha256) {
                         installed += 1;
                     } else if path.symlink_metadata().is_ok() {
@@ -251,10 +256,18 @@ impl<P: Platform> Manager<P> {
         self.download(
             &cat.revision,
             &family.id,
-            family.files.first().ok_or("Empty font family")?,
+            family
+                .files
+                .iter()
+                .min_by_key(|f| (f.italic, f.weight.abs_diff(400)))
+                .ok_or("Empty font family")?,
         )
     }
     fn download(&self, revision: &str, id: &str, font: &FontFile) -> Result<Vec<u8>> {
+        let installed = self.destination(id, font);
+        if Self::matches(&installed, &font.sha256) {
+            return fs::read(installed).map_err(err);
+        }
         let cache_dir = self.data.join("cache");
         fs::create_dir_all(&cache_dir).map_err(err)?;
         let cached = cache_dir.join(format!("{}.ttf", font.sha256));
@@ -299,20 +312,30 @@ impl<P: Platform> Manager<P> {
         Ok(data)
     }
     pub fn install(&self, id: &str) -> Result<Outcome> {
+        self.install_with_progress(id, |_, _, _| {})
+    }
+    pub fn install_with_progress(
+        &self,
+        id: &str,
+        progress: impl Fn(&str, usize, usize),
+    ) -> Result<Outcome> {
         let (cat, family) = self.family(id)?;
         let mut receipts = self.receipts()?;
         // Validate all downloads before touching the system fonts directory.
         let files: Vec<_> = family
             .files
             .iter()
-            .map(|font| {
+            .enumerate()
+            .map(|(index, font)| {
+                progress("download", index, family.files.len());
                 self.download(&cat.revision, id, font)
                     .map(|bytes| (font, bytes))
             })
             .collect::<Result<_>>()?;
         fs::create_dir_all(&self.fonts).map_err(err)?;
         let mut count = 0;
-        for (font, bytes) in files {
+        for (index, (font, bytes)) in files.into_iter().enumerate() {
+            progress("install", index, family.files.len());
             let path = self.destination(id, font);
             let owned = receipts
                 .files
@@ -361,6 +384,11 @@ impl<P: Platform> Manager<P> {
         }
         // Preserve licence alongside receipts, outside the system font directory.
         fs::write(self.data.join(format!("OFL-{id}.txt")), &family.license).map_err(err)?;
+        // Installed files are the verified source for future previews; remove duplicate downloads.
+        for font in &family.files {
+            let _ = fs::remove_file(self.data.join("cache").join(format!("{}.ttf", font.sha256)));
+        }
+        progress("refresh", family.files.len(), family.files.len());
         Ok(Outcome {
             count,
             warning: self.platform.refresh(&self.fonts),
@@ -437,7 +465,29 @@ mod tests {
             bytes,
         )
         .unwrap();
-        assert_eq!(m.install("anuphan").unwrap().count, 1);
+        let events = std::cell::RefCell::new(Vec::new());
+        assert_eq!(
+            m.install_with_progress("anuphan", |phase, done, total| {
+                events.borrow_mut().push((phase.to_string(), done, total));
+            })
+            .unwrap()
+            .count,
+            1
+        );
+        assert_eq!(
+            *events.borrow(),
+            vec![
+                ("download".into(), 0, 1),
+                ("install".into(), 0, 1),
+                ("refresh".into(), 1, 1)
+            ]
+        );
+        assert!(!m
+            .data
+            .join("cache")
+            .join(format!("{}.ttf", font.sha256))
+            .exists());
+        assert_eq!(m.font_bytes("anuphan").unwrap(), bytes.to_vec());
         assert_eq!(m.install("anuphan").unwrap().count, 0);
         assert_eq!(
             m.status()
