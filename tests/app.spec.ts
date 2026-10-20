@@ -99,53 +99,33 @@ test('automatic preview, live progress and consecutive installs stay responsive'
   }
   expect(await page.evaluate(() => (window as any).installs)).toBe(4);
   expect(await page.evaluate(() => document.fonts.size)).toBeLessThanOrEqual(2);
-  await expect(page.locator('#install')).toHaveCSS('background-color', 'rgb(253, 106, 13)');
-  await expect(page.locator('#install')).toHaveCSS('color', 'rgb(3, 26, 62)');
+  await expect(page.locator('#install')).toHaveCSS('background-color', 'rgb(255, 121, 8)');
+  await expect(page.locator('#install')).toHaveCSS('color', 'rgb(255, 255, 255)');
 });
 
 
-test('PhotoCraft bridge applies catalog font, favorites persist, categories filter', async ({page}) => {
-  await page.addInitScript(({catalog,fixture}) => {
-    const state:any=window; state.applied=[];
-    state.__TAURI_INTERNALS__={transformCallback:()=>1,invoke:async(cmd:string,args:any)=>{
-      if(cmd==='catalog')return catalog;
-      if(cmd==='font_status')return [];
-      if(cmd==='preview_font')return new Uint8Array(fixture).buffer;
-      if(cmd==='photocraft_open'||cmd==='photocraft_check')return null;
-      if(cmd==='photocraft_apply'){state.applied.push(args.id);return null;}
-      throw new Error(cmd);
-    }};
-  },{catalog,fixture});
+test('favorites persist, categories filter, and no PhotoCraft launcher remains', async ({page}) => {
   await page.goto('/');
-  await expect(page.locator('#install')).toBeEnabled();
-  await expect(page.locator('#apply-photocraft')).toBeDisabled();
   await page.locator('#favorite').click();
   await page.locator('[data-filter="favorites"]').click();
   await expect(page.locator('.font-card')).toHaveCount(1);
-  await page.locator('#bridge-open').click();
-  await expect(page.locator('#bridge-status')).toContainText('เชื่อมต่อแล้ว');
-  await page.locator('#apply-photocraft').click();
-  await expect(page.locator('#notice')).toContainText('ใช้ Sarabun กับเลเยอร์ข้อความ');
-  expect(await page.evaluate(()=>(window as any).applied)).toEqual(['sarabun']);
-  await page.locator('[data-filter="recent"]').click();
-  await expect(page.locator('.font-card')).toHaveCount(1);
   await page.reload();
-  await expect(page.locator('#install')).toBeEnabled();
   await page.locator('[data-filter="favorites"]').click();
   await expect(page.locator('.font-card')).toHaveCount(1);
   await page.locator('[data-filter="all"]').click();
   await page.locator('#category').selectOption('HANDWRITING');
   await expect(page.locator('.font-card')).toHaveCount(6);
+  await expect(page.getByText('เปิด PhotoCraft และเชื่อมต่อ', {exact:true})).toHaveCount(0);
+  await expect(page.locator('#apply-photocraft, #bridge-open')).toHaveCount(0);
 });
 
-test('slow preview and PhotoCraft connection do not freeze font browsing', async ({page}) => {
+test('slow preview does not freeze font browsing', async ({page}) => {
   await page.addInitScript(({catalog,fixture}) => {
     const state:any=window;
     state.__TAURI_INTERNALS__={transformCallback:()=>1,invoke:async(cmd:string)=>{
       if(cmd==='catalog')return catalog;
       if(cmd==='font_status')return [];
       if(cmd==='preview_font')return new Promise(resolve=>{state.finishPreview=()=>resolve(new Uint8Array(fixture).buffer);});
-      if(cmd==='photocraft_check')return new Promise((_,reject)=>{state.failBridge=()=>reject(new Error('Connection deadline'));});
       throw new Error(cmd);
     }};
   },{catalog,fixture});
@@ -159,13 +139,5 @@ test('slow preview and PhotoCraft connection do not freeze font browsing', async
   await expect(page.locator('#work-text')).toContainText('Anuphan');
   await page.evaluate(()=>(window as any).finishPreview());
   await expect(page.locator('#preview-state')).toHaveText('แสดงด้วย Anuphan จริง');
-  await page.locator('#bridge-check').click();
-  await expect(page.locator('.bridge-panel')).toHaveAttribute('aria-busy','true');
   await expect(page.locator('#install')).toBeEnabled();
-  await expect(page.getByRole('searchbox')).toBeEnabled();
-  await page.getByRole('searchbox').fill('Kanit');
-  await expect(page.locator('.font-card')).toHaveCount(1);
-  await page.evaluate(()=>(window as any).failBridge());
-  await expect(page.locator('#bridge-status')).toContainText('Connection deadline');
-  await expect(page.locator('#bridge-check')).toBeEnabled();
 });

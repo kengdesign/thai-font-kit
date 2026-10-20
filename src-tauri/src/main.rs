@@ -1,7 +1,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod photocraft;
-
 use thai_font_kit_core::{Catalog, Manager, Outcome, Status};
 
 #[tauri::command]
@@ -45,32 +43,9 @@ async fn uninstall_font(id: String) -> Result<Outcome, String> {
         .await
         .map_err(|e| e.to_string())?
 }
-#[tauri::command]
-fn companion_mode(window: tauri::WebviewWindow, enabled: bool) -> Result<(), String> {
-    let (width, height) = if enabled {
-        (460.0, 820.0)
-    } else {
-        (1140.0, 800.0)
-    };
-    window
-        .set_min_size(Some(tauri::LogicalSize::new(
-            if enabled { 420.0 } else { 780.0 },
-            600.0,
-        )))
-        .map_err(|e| e.to_string())?;
-    window
-        .set_size(tauri::LogicalSize::new(width, height))
-        .map_err(|e| e.to_string())?;
-    window.set_always_on_top(enabled).map_err(|e| e.to_string())
-}
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
-            photocraft::photocraft_open,
-            photocraft::photocraft_check,
-            photocraft::photocraft_apply,
-            companion_mode,
             catalog,
             font_status,
             preview_font,

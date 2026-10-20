@@ -1,4 +1,3 @@
-pub mod photocraft;
 mod platform;
 
 use fs2::FileExt;
