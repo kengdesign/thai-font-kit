@@ -1,5 +1,7 @@
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::{fs, path::PathBuf, process::Command};
 use tauri::Manager;
+static LAUNCHED: AtomicBool = AtomicBool::new(false);
 use tauri_plugin_dialog::DialogExt;
 use thai_font_kit_core::photocraft::Bridge;
 
@@ -13,6 +15,9 @@ fn data(app: &tauri::AppHandle) -> Result<PathBuf, String> {
     Ok(dir)
 }
 fn connect(app: &tauri::AppHandle) -> Result<Bridge, String> {
+    connect_for(app, std::time::Duration::from_secs(12))
+}
+fn connect_for(app: &tauri::AppHandle, budget: std::time::Duration) -> Result<Bridge, String> {
     let token = data(app)?.join("control.token");
     if fs::symlink_metadata(&token)
         .map(|m| !m.is_file() || m.file_type().is_symlink() || m.len() > 256)
@@ -20,10 +25,11 @@ fn connect(app: &tauri::AppHandle) -> Result<Bridge, String> {
     {
         return Err("กรุณาเปิด PhotoCraft ผ่านปุ่มในแอปก่อน".into());
     }
-    Bridge::connect(
+    Bridge::connect_for(
         fs::read_to_string(token)
             .map_err(|_| "อ่านข้อมูลเชื่อมต่อไม่ได้")?
             .trim(),
+        budget,
     )
 }
 #[tauri::command]
@@ -76,8 +82,14 @@ pub async fn photocraft_open(app: tauri::AppHandle, select: bool) -> Result<(), 
         if fs::symlink_metadata(&token).is_ok_and(|m| m.file_type().is_symlink()) {
             return Err("ตำแหน่งข้อมูลเชื่อมต่อไม่ปลอดภัย".into());
         }
-        if connect(&app).and_then(|mut b| b.check()).is_ok() {
+        if connect_for(&app, std::time::Duration::from_secs(2))
+            .and_then(|mut b| b.check())
+            .is_ok()
+        {
             return Ok(());
+        }
+        if LAUNCHED.compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst).is_err() {
+            return Err("PhotoCraft ที่เปิดผ่านแอปยังทำงานอยู่ กดเชื่อมต่ออีกครั้ง หากต้องเปิดใหม่ให้บันทึกงานและปิด PhotoCraft ก่อน".into());
         }
         let mut command = Command::new(&path);
         command
@@ -90,19 +102,26 @@ pub async fn photocraft_open(app: tauri::AppHandle, select: bool) -> Result<(), 
         }
         let mut child = command
             .spawn()
-            .map_err(|_| "เปิด PhotoCraft ไม่สำเร็จ กรุณาตรวจตำแหน่งโปรแกรม")?;
-        fs::write(
-            config,
-            serde_json::to_vec(&path).map_err(|e| e.to_string())?,
-        )
-        .map_err(|e| e.to_string())?;
-        // Reap only the process we launched; no service and no force-close of the editor.
+            .map_err(|_| { LAUNCHED.store(false, Ordering::SeqCst); "เปิด PhotoCraft ไม่สำเร็จ กรุณาตรวจตำแหน่งโปรแกรม" })?;
+        let (exit_tx, exit_rx) = std::sync::mpsc::channel();
         std::thread::spawn(move || {
-            let _ = child.wait();
+            let exit = child.wait(); LAUNCHED.store(false, Ordering::SeqCst); let _ = exit_tx.send(exit);
         });
+        fs::write(config, serde_json::to_vec(&path).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
         let deadline = std::time::Instant::now() + std::time::Duration::from_secs(15);
         while std::time::Instant::now() < deadline {
-            if connect(&app).and_then(|mut b| b.check()).is_ok() {
+            if exit_rx.try_recv().is_ok() {
+                return Err(
+                    "PhotoCraft ปิดตัวก่อนเชื่อมต่อ อาจไม่รองรับโหมดควบคุม กรุณาตรวจรุ่นโปรแกรม".into(),
+                );
+            }
+            let budget = deadline
+                .saturating_duration_since(std::time::Instant::now())
+                .min(std::time::Duration::from_secs(2));
+            if connect_for(&app, budget)
+                .and_then(|mut b| b.check())
+                .is_ok()
+            {
                 return Ok(());
             }
             std::thread::sleep(std::time::Duration::from_millis(500));

@@ -27,10 +27,6 @@ pub fn register(path: &Path, add: bool) -> Result<(), String> {
             reserved: *mut std::ffi::c_void,
         ) -> i32;
     }
-    #[link(name = "user32")]
-    extern "system" {
-        fn SendNotifyMessageW(hwnd: isize, msg: u32, wparam: usize, lparam: isize) -> i32;
-    }
     let wide: Vec<u16> = path.as_os_str().encode_wide().chain(Some(0)).collect();
     let (key, _) = RegKey::predef(HKEY_CURRENT_USER)
         .create_subkey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts")
@@ -67,9 +63,6 @@ pub fn register(path: &Path, add: bool) -> Result<(), String> {
         unsafe {
             RemoveFontResourceExW(wide.as_ptr(), 0, std::ptr::null_mut());
         }
-    }
-    unsafe {
-        SendNotifyMessageW(0xffff, 0x001d, 0, 0);
     }
     Ok(())
 }
@@ -143,6 +136,16 @@ pub fn register(_path: &Path, _add: bool) -> Result<(), String> {
 }
 
 pub fn refresh(dir: &Path) -> String {
+    #[cfg(target_os = "windows")]
+    {
+        #[link(name = "user32")]
+        extern "system" {
+            fn SendNotifyMessageW(hwnd: isize, msg: u32, wparam: usize, lparam: isize) -> i32;
+        }
+        unsafe {
+            SendNotifyMessageW(0xffff, 0x001d, 0, 0);
+        }
+    }
     #[cfg(target_os = "linux")]
     {
         use std::{

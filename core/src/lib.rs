@@ -278,8 +278,8 @@ impl<P: Platform> Manager<P> {
             }
         }
         let client = reqwest::blocking::Client::builder()
-            .timeout(Duration::from_secs(60))
-            .connect_timeout(Duration::from_secs(15))
+            .timeout(Duration::from_secs(20))
+            .connect_timeout(Duration::from_secs(5))
             .redirect(reqwest::redirect::Policy::none())
             .user_agent(concat!("ThaiFontKit/", env!("CARGO_PKG_VERSION")))
             .build()
@@ -320,14 +320,28 @@ impl<P: Platform> Manager<P> {
         id: &str,
         progress: impl Fn(&str, usize, usize),
     ) -> Result<Outcome> {
+        let result = self.install_inner(id, progress);
+        if result.is_err() {
+            let _ = self.platform.refresh(&self.fonts);
+        }
+        result
+    }
+    fn install_inner(&self, id: &str, progress: impl Fn(&str, usize, usize)) -> Result<Outcome> {
         let (cat, family) = self.family(id)?;
         let mut receipts = self.receipts()?;
         // Validate all downloads before touching the system fonts directory.
+        let deadline = std::time::Instant::now() + Duration::from_secs(90);
         let files: Vec<_> = family
             .files
             .iter()
             .enumerate()
             .map(|(index, font)| {
+                if std::time::Instant::now() >= deadline {
+                    return Err(
+                        "ดาวน์โหลดเกินเวลาที่กำหนด ยังไม่ได้ติดตั้งไฟล์ใหม่ กรุณาตรวจอินเทอร์เน็ตแล้วลองอีกครั้ง"
+                            .into(),
+                    );
+                }
                 progress("download", index, family.files.len());
                 self.download(&cat.revision, id, font)
                     .map(|bytes| (font, bytes))
@@ -396,6 +410,13 @@ impl<P: Platform> Manager<P> {
         })
     }
     pub fn uninstall(&self, id: &str) -> Result<Outcome> {
+        let result = self.uninstall_inner(id);
+        if result.is_err() {
+            let _ = self.platform.refresh(&self.fonts);
+        }
+        result
+    }
+    fn uninstall_inner(&self, id: &str) -> Result<Outcome> {
         self.family(id)?;
         let mut receipts = self.receipts()?;
         let selected: Vec<_> = receipts

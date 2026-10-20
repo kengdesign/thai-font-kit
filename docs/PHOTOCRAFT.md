@@ -1,4 +1,4 @@
-# PhotoCraft companion (0.3.0 alpha)
+# PhotoCraft companion (0.3.1 alpha)
 
 This is an external companion, not an embedded PhotoCraft panel. It uses the documented authenticated loopback JSON-line control protocol, `engine.execute`, `type.fonts`, `type.info`, and `type.setStyle`.
 
@@ -16,7 +16,7 @@ Install missing fonts before opening PhotoCraft. When PhotoCraft does not yet se
 
 ## Limits and testing
 
-Experimental: protocol compatibility is checked at connection time, but installed PhotoCraft versions differ. Both apps must run under the same user. The bridge only connects to 127.0.0.1:17878, authenticates every connection, bounds replies to 1 MB, and never retries a document edit. A timeout may mean the edit already happened: check the document before retrying. No background polling or service. Closing Thai Font Kit does not force-close PhotoCraft.
+Experimental: protocol compatibility is checked at connection time, but installed PhotoCraft versions differ. Both apps must run under the same user. The bridge only connects to 127.0.0.1:17878, authenticates every connection, bounds replies to 1 MB and the entire connection operation to 12 seconds (startup probes share a 15-second launch deadline), and never retries a document edit. A timeout may mean the edit already happened: check the document before retrying. No background polling or service. Waiting for connection does not disable font browsing or installation. The launcher prevents launching a second child while its previous child remains alive. Closing Thai Font Kit does not force-close PhotoCraft.
 
 The selected layer at the time you press Apply is the target, and the whole layer is styled. Existing canvas text selection is not used as a range. This version does not implement live hover previews, automatic font activation inside PhotoCraft, project collections or multi-font comparison.
 

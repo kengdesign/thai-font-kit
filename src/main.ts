@@ -24,11 +24,19 @@ function saveIds(key: string, ids: string[]) { try { localStorage.setItem(key, J
 function remember(id: string) { recent = [id, ...recent.filter(x => x !== id)].slice(0, 12); saveIds('tfk-recent', recent); }
 
 let busy = false;
+let previewBusy = false;
+let bridgeBusy = false;
+let workTimer: ReturnType<typeof setInterval> | undefined;
 let loaded = new Set<string>();
 let previewSequence = 0;
 let activeFace: FontFace | undefined;
 let previewError = '';
 function work(text: string, done?: number, total?: number) {
+  if (el('work-status').hidden) {
+    const start = Date.now(); el('work-elapsed').textContent = '0 วินาที';
+    clearInterval(workTimer);
+    workTimer = setInterval(() => { el('work-elapsed').textContent = `${Math.floor((Date.now() - start) / 1000)} วินาที`; }, 1000);
+  }
   el('work-status').hidden = false;
   el('work-text').textContent = text;
   const bar = el<HTMLProgressElement>('work-progress');
@@ -46,7 +54,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <button class="nav" data-filter="recent"><span>◷</span>ใช้กับ PhotoCraft ล่าสุด</button>
     </nav>
     <div class="side-note"><span class="note-icon">↙</span><strong>เลือก • ทดลอง • ติดตั้ง</strong><p>ดาวน์โหลดเฉพาะฟอนต์ที่เลือก<br>ติดตั้งแล้วใช้งานออฟไลน์ได้</p></div>
-    <div class="side-bottom">OPEN SOURCE · v0.3.0 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
+    <div class="side-bottom">OPEN SOURCE · v0.3.1 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
   </aside>
   <main>
     <header><div class="eyebrow">MADE FOR THAI CREATORS</div><h1>ฟอนต์ไทยที่ใช่<br><span>พร้อมใช้ในเครื่องคุณ</span></h1><p>เลือกฟอนต์สำหรับงานชิ้นต่อไป ทดลองข้อความ แล้วติดตั้งได้ในไม่กี่คลิก</p><span class="badge">ใช้งานฟรี · ไม่ต้องสมัครสมาชิก</span></header>
@@ -71,7 +79,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="preview-foot"><span id="preview-state">กดทดลองฟอนต์เพื่อดาวน์โหลดตัวอย่างจริง</span><button id="preview" class="text-button">ทดลองฟอนต์ ↓</button></div>
         <div class="glyphs" aria-label="ชุดอักษรตัวอย่าง">ก ข ค ง จ · สระอิ สระอุ · น้ำ ผู้ใหญ่ เก้าอี้<br><span>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789 · ฿ ! ? @ #</span></div>
         <div class="install-info"><span id="install-state"></span><small id="download-size"></small></div>
-        <div id="work-status" class="work-status" role="status" aria-live="polite" hidden><span class="spinner" aria-hidden="true"></span><strong id="work-text"></strong><progress id="work-progress" aria-label="ความคืบหน้า"></progress></div>
+        <div id="work-status" class="work-status" role="status" aria-live="polite" hidden><span class="spinner" aria-hidden="true"></span><strong id="work-text"></strong><small id="work-elapsed"></small><progress id="work-progress" aria-label="ความคืบหน้า"></progress></div>
         <div class="actions"><button id="install" class="primary">ติดตั้งฟอนต์นี้ <span>↓</span></button><button id="uninstall" class="secondary">ถอนฟอนต์</button></div>
         <button id="apply-photocraft" class="primary apply-button" disabled>ใช้ใน PhotoCraft →</button><p id="apply-hint" class="apply-hint">เชื่อมต่อ PhotoCraft เพื่อใช้กับเลเยอร์ข้อความที่เลือก</p>
         <p class="restart-note">หลังติดตั้ง ให้ปิดแล้วเปิดโปรแกรมออกแบบอีกครั้งเพื่อโหลดรายชื่อฟอนต์</p>
@@ -89,11 +97,12 @@ function status(f: Family) { return statuses.find(s => s.id === f.id) ?? { id: f
 function size(bytes: number) { return `${(bytes / 1_000_000).toFixed(1)} MB`; }
 function setBusy(value: boolean) {
   busy = value;
-  document.querySelectorAll<HTMLButtonElement>('.nav, .font-card, #preview, #install, #uninstall, #bridge-open, #bridge-check, #bridge-select, #apply-photocraft').forEach(b => { b.disabled = value; });
+  document.querySelectorAll<HTMLButtonElement>('.nav, .font-card, #preview, #install, #uninstall, #apply-photocraft').forEach(b => { b.disabled = value; });
   el<HTMLInputElement>('search').disabled = value;
   el('app').setAttribute('aria-busy', String(value));
-  if (!value) { el('work-status').hidden = true; detail(); }
+  if (!value) { endWork(); detail(); }
 }
+function endWork() { el('work-status').hidden = true; clearInterval(workTimer); workTimer = undefined; }
 function renderList() {
   const query = el<HTMLInputElement>('search').value.trim().toLowerCase();
   let visible = families.filter(f => (category === 'all' || f.category === category) && (filter !== 'favorites' || favorites.has(f.id)) && (filter !== 'recent' || recent.includes(f.id)) && (filter !== 'installed' || status(f).managed > 0) && `${f.name} ${f.description}`.toLowerCase().includes(query));
@@ -124,7 +133,7 @@ function detail() {
   el('family-name').textContent = selected.name;
   el('favorite').textContent = favorites.has(selected.id) ? '★ บันทึกในรายการโปรดแล้ว' : '☆ เพิ่มรายการโปรด';
   el('favorite').setAttribute('aria-pressed', String(favorites.has(selected.id)));
-  el<HTMLButtonElement>('apply-photocraft').disabled = busy || !native || !connected;
+  el<HTMLButtonElement>('apply-photocraft').disabled = busy || previewBusy || !native || !connected;
   el('apply-hint').textContent = connected ? 'เลือกเลเยอร์ข้อความใน PhotoCraft ก่อนกดใช้ · ย้อนกลับได้ใน PhotoCraft' : 'เปิด PhotoCraft ผ่านปุ่มด้านบนเพื่อเชื่อมต่อ';
 
   el('family-description').textContent = selected.description;
@@ -138,27 +147,28 @@ function detail() {
   el('install-state').textContent = s.changed ? 'มีไฟล์ที่ถูกแก้ไข แอปจะไม่ลบหรือเขียนทับไฟล์นั้น' : s.installed ? `ติดตั้งผ่านแอปแล้ว ${s.installed}/${s.total} ไฟล์` : 'ติดตั้งสำหรับบัญชีผู้ใช้ปัจจุบัน';
   el('download-size').textContent = `รวมทุกน้ำหนัก ${size(selected.files.reduce((n, f) => n + f.size, 0))}`;
   el('install').textContent = s.installed === s.total ? 'ตรวจซ่อมการติดตั้ง ↻' : 'ติดตั้งฟอนต์นี้ ↓';
-  el<HTMLButtonElement>('install').disabled = busy || !native;
-  el<HTMLButtonElement>('uninstall').disabled = busy || !native || !s.managed;
-  el<HTMLButtonElement>('preview').disabled = busy || !native || actual;
+  el<HTMLButtonElement>('install').disabled = busy || previewBusy || !native;
+  el<HTMLButtonElement>('uninstall').disabled = busy || previewBusy || !native || !s.managed;
+  el<HTMLButtonElement>('preview').disabled = busy || previewBusy || !native || actual;
 }
 async function refresh() { statuses = await invoke<Status[]>('font_status'); renderList(); detail(); }
 async function preview() {
   const f = selected; const seq = ++previewSequence;
-  if (busy || loaded.has(f.id)) return;
-  setBusy(true); previewError = '';
+  if (busy || previewBusy || loaded.has(f.id)) return;
+  previewBusy = true; detail(); previewError = '';
   el('sample').classList.add('preview-loading');
   el('preview-state').textContent = `กำลังโหลดตัวอย่าง ${f.name}…`;
   work(`กำลังโหลดตัวอย่าง ${f.name}…`);
   message(`กำลังโหลดตัวอย่าง ${f.name}…`);
   try {
     const bytes = await invoke<number[] | ArrayBuffer>('preview_font', { id: f.id });
+    if (seq !== previewSequence) return;
     const face = await new FontFace(`preview-${f.id}`, new Uint8Array(bytes)).load();
     if (activeFace) document.fonts.delete(activeFace);
     activeFace = face; loaded.clear(); document.fonts.add(face); loaded.add(f.id);
     if (seq === previewSequence) message(`พร้อมทดลอง ${f.name} — ยังไม่ได้ติดตั้งฟอนต์ลงเครื่อง`);
-  } catch (error) { previewError = `โหลดตัวอย่าง ${f.name} ไม่สำเร็จ — ยังแสดงฟอนต์หน้าจอ กดลองอีกครั้ง`; message(`${previewError}: ${String(error)}`, true); }
-  finally { el('sample').classList.remove('preview-loading'); setBusy(false); }
+  } catch (error) { if (seq !== previewSequence) return; previewError = `โหลดตัวอย่าง ${f.name} ไม่สำเร็จ — ยังแสดงฟอนต์หน้าจอ กดลองอีกครั้ง`; message(`${previewError}: ${String(error)}`, true); }
+  finally { previewBusy = false; el('sample').classList.remove('preview-loading'); endWork(); detail(); if (selected.id !== f.id) void preview(); }
 }
 let pending: (() => void) | undefined;
 function confirmAction(remove: boolean) {
@@ -191,13 +201,15 @@ el('search').oninput = renderList;
 el('category').onchange = () => { category = el<HTMLSelectElement>('category').value; renderList(); };
 el('favorite').onclick = () => { if (favorites.has(selected.id)) favorites.delete(selected.id); else favorites.add(selected.id); saveIds('tfk-favorites', [...favorites]); renderList(); detail(); };
 async function bridgeAction(action: 'open' | 'select' | 'check') {
-  if (busy || !native) return;
-  setBusy(true); el('bridge-status').textContent = action === 'check' ? 'กำลังตรวจการเชื่อมต่อ…' : 'กำลังเปิด PhotoCraft…';
+  if (bridgeBusy || !native) return;
+  bridgeBusy = true; connected = false; detail(); document.querySelector('.bridge-panel')!.setAttribute('aria-busy', 'true');
+  for (const id of ['bridge-open', 'bridge-select', 'bridge-check']) el<HTMLButtonElement>(id).disabled = true;
+  el('bridge-status').textContent = action === 'check' ? 'กำลังตรวจการเชื่อมต่อ…' : 'กำลังเปิด PhotoCraft…';
   try {
     await invoke(action === 'check' ? 'photocraft_check' : 'photocraft_open', { select: action === 'select' });
     connected = true; el('bridge-status').textContent = '● เชื่อมต่อแล้ว · เปิดเอกสารและเลือกเลเยอร์ข้อความใน PhotoCraft';
   } catch (error) { connected = false; el('bridge-status').textContent = String(error); }
-  finally { setBusy(false); }
+  finally { bridgeBusy = false; document.querySelector('.bridge-panel')!.setAttribute('aria-busy', 'false'); for (const id of ['bridge-open', 'bridge-select', 'bridge-check']) el<HTMLButtonElement>(id).disabled = false; detail(); }
 }
 el('compact').onclick = async () => {
   if (!native || busy) return;
@@ -208,7 +220,7 @@ el('bridge-open').onclick = () => { void bridgeAction('open'); };
 el('bridge-select').onclick = () => { void bridgeAction('select'); };
 el('bridge-check').onclick = () => { void bridgeAction('check'); };
 el('apply-photocraft').onclick = async () => {
-  if (busy || !native || !connected) return;
+  if (busy || previewBusy || !native || !connected) return;
   const f = selected; setBusy(true); work(`กำลังใช้ ${f.name} ใน PhotoCraft…`);
   try { await invoke('photocraft_apply', { id: f.id }); remember(f.id); message(`ใช้ ${f.name} กับเลเยอร์ข้อความใน PhotoCraft แล้ว · ย้อนกลับได้ใน PhotoCraft`); }
   catch (error) { message(String(error), true); }

@@ -137,3 +137,35 @@ test('PhotoCraft bridge applies catalog font, favorites persist, categories filt
   await page.locator('#category').selectOption('HANDWRITING');
   await expect(page.locator('.font-card')).toHaveCount(6);
 });
+
+test('slow preview and PhotoCraft connection do not freeze font browsing', async ({page}) => {
+  await page.addInitScript(({catalog,fixture}) => {
+    const state:any=window;
+    state.__TAURI_INTERNALS__={transformCallback:()=>1,invoke:async(cmd:string)=>{
+      if(cmd==='catalog')return catalog;
+      if(cmd==='font_status')return [];
+      if(cmd==='preview_font')return new Promise(resolve=>{state.finishPreview=()=>resolve(new Uint8Array(fixture).buffer);});
+      if(cmd==='photocraft_check')return new Promise((_,reject)=>{state.failBridge=()=>reject(new Error('Connection deadline'));});
+      throw new Error(cmd);
+    }};
+  },{catalog,fixture});
+  await page.goto('/');
+  await expect(page.locator('#work-status')).toBeVisible();
+  await expect(page.getByRole('searchbox')).toBeEnabled();
+  await page.getByRole('searchbox').fill('Anuphan');
+  await page.locator('.font-card').click();
+  await expect(page.locator('#family-name')).toHaveText('Anuphan');
+  await page.evaluate(()=>(window as any).finishPreview());
+  await expect(page.locator('#work-text')).toContainText('Anuphan');
+  await page.evaluate(()=>(window as any).finishPreview());
+  await expect(page.locator('#preview-state')).toHaveText('แสดงด้วย Anuphan จริง');
+  await page.locator('#bridge-check').click();
+  await expect(page.locator('.bridge-panel')).toHaveAttribute('aria-busy','true');
+  await expect(page.locator('#install')).toBeEnabled();
+  await expect(page.getByRole('searchbox')).toBeEnabled();
+  await page.getByRole('searchbox').fill('Kanit');
+  await expect(page.locator('.font-card')).toHaveCount(1);
+  await page.evaluate(()=>(window as any).failBridge());
+  await expect(page.locator('#bridge-status')).toContainText('Connection deadline');
+  await expect(page.locator('#bridge-check')).toBeEnabled();
+});
