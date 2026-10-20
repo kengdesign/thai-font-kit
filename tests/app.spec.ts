@@ -102,3 +102,38 @@ test('automatic preview, live progress and consecutive installs stay responsive'
   await expect(page.locator('#install')).toHaveCSS('background-color', 'rgb(253, 106, 13)');
   await expect(page.locator('#install')).toHaveCSS('color', 'rgb(3, 26, 62)');
 });
+
+
+test('PhotoCraft bridge applies catalog font, favorites persist, categories filter', async ({page}) => {
+  await page.addInitScript(({catalog,fixture}) => {
+    const state:any=window; state.applied=[];
+    state.__TAURI_INTERNALS__={transformCallback:()=>1,invoke:async(cmd:string,args:any)=>{
+      if(cmd==='catalog')return catalog;
+      if(cmd==='font_status')return [];
+      if(cmd==='preview_font')return new Uint8Array(fixture).buffer;
+      if(cmd==='photocraft_open'||cmd==='photocraft_check')return null;
+      if(cmd==='photocraft_apply'){state.applied.push(args.id);return null;}
+      throw new Error(cmd);
+    }};
+  },{catalog,fixture});
+  await page.goto('/');
+  await expect(page.locator('#install')).toBeEnabled();
+  await expect(page.locator('#apply-photocraft')).toBeDisabled();
+  await page.locator('#favorite').click();
+  await page.locator('[data-filter="favorites"]').click();
+  await expect(page.locator('.font-card')).toHaveCount(1);
+  await page.locator('#bridge-open').click();
+  await expect(page.locator('#bridge-status')).toContainText('เชื่อมต่อแล้ว');
+  await page.locator('#apply-photocraft').click();
+  await expect(page.locator('#notice')).toContainText('ใช้ Sarabun กับเลเยอร์ข้อความ');
+  expect(await page.evaluate(()=>(window as any).applied)).toEqual(['sarabun']);
+  await page.locator('[data-filter="recent"]').click();
+  await expect(page.locator('.font-card')).toHaveCount(1);
+  await page.reload();
+  await expect(page.locator('#install')).toBeEnabled();
+  await page.locator('[data-filter="favorites"]').click();
+  await expect(page.locator('.font-card')).toHaveCount(1);
+  await page.locator('[data-filter="all"]').click();
+  await page.locator('#category').selectOption('HANDWRITING');
+  await expect(page.locator('.font-card')).toHaveCount(6);
+});

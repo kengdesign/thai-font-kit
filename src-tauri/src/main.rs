@@ -1,5 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod photocraft;
+
 use thai_font_kit_core::{Catalog, Manager, Outcome, Status};
 
 #[tauri::command]
@@ -45,7 +47,11 @@ async fn uninstall_font(id: String) -> Result<Outcome, String> {
 }
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
+            photocraft::photocraft_open,
+            photocraft::photocraft_check,
+            photocraft::photocraft_apply,
             catalog,
             font_status,
             preview_font,
