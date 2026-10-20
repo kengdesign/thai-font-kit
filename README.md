@@ -1,3 +1,5 @@
+<p><img src="app-icon.svg" width="88" height="88" alt="Thai Font Kit"></p>
+
 # Thai Font Kit
 
 **ฟอนต์ไทย 34 ตระกูล เลือก ทดลอง และติดตั้งได้ในแอปเดียว**
@@ -10,20 +12,20 @@
 
 เลือกปุ่มให้ตรงกับเครื่องของคุณ **คลิกเพื่อดาวน์โหลดไฟล์ แล้วเปิดไฟล์เพื่อติดตั้ง**
 
-**เวอร์ชัน 0.2.0 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
+**เวอร์ชัน 0.2.1 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
 
 ### Windows
 
-[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_x64-setup.exe)
+[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_x64-setup.exe)
 
 สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.42 MB**<br>
 เปิดไฟล์ `.exe` ที่ดาวน์โหลด แล้วทำตามขั้นตอนบนหน้าจอ
 
 ### macOS
 
-[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_x64.dmg)
+[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_x64.dmg)
 
-- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.75 MB
+- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.76 MB
 - **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 2.90 MB
 
 ตรวจชนิดชิปได้ที่เมนู Apple → **เกี่ยวกับ Mac เครื่องนี้ / About This Mac**<br>
@@ -31,7 +33,7 @@
 
 ### Linux
 
-[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.0-alpha.4/Thai.Font.Kit_0.2.0_amd64.AppImage)
+[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_amd64.AppImage)
 
 - **Ubuntu / Debian:** เลือก `.deb` · 2.84 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
 - **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.36 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
