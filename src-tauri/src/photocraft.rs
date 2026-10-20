@@ -46,14 +46,11 @@ pub async fn photocraft_open(app: tauri::AppHandle, select: bool) -> Result<(), 
         };
         let mut path = match saved {
             Some(path) => path,
-            None => app
-                .dialog()
-                .file()
-                .set_title("เลือกโปรแกรม PhotoCraft ที่ติดตั้งไว้")
-                .blocking_pick_file()
-                .ok_or("ยกเลิกการเลือก PhotoCraft")?
-                .into_path()
-                .map_err(|_| "ตำแหน่งโปรแกรมไม่รองรับ")?,
+            None => {
+                let picker = app.dialog().file().set_title("เลือกโปรแกรม PhotoCraft ที่ติดตั้งไว้");
+                let picker = if let Some(window) = app.get_webview_window("main") { picker.set_parent(&window) } else { picker };
+                picker.blocking_pick_file().ok_or("ยกเลิกการเลือก PhotoCraft")?.into_path().map_err(|_| "ตำแหน่งโปรแกรมไม่รองรับ")?
+            },
         };
         #[cfg(target_os = "macos")]
         if path.extension().is_some_and(|e| e == "app") {
