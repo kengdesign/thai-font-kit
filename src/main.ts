@@ -1,6 +1,7 @@
 import { invoke } from '@tauri-apps/api/core';
 import fallbackCatalog from '../core/catalog.json';
 import './style.css';
+import appIcon from '../app-icon.svg';
 
 type FontFile = { filename: string; size: number; weight: number; italic: boolean };
 type Family = { id: string; name: string; description: string; category: string; license: string; files: FontFile[] };
@@ -17,14 +18,14 @@ let previewSequence = 0;
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <aside class="sidebar">
-    <div class="brand"><span class="brand-icon">ก</span><div>Thai Font Kit<small>ฟอนต์ไทย พร้อมใช้</small></div></div>
+    <div class="brand"><img class="brand-icon" src="${appIcon}" alt="ไอคอน Thai Font Kit"><div>Thai Font Kit<small>ฟอนต์ไทย พร้อมใช้</small></div></div>
     <div class="side-label">คลังฟอนต์</div>
     <nav aria-label="หมวดฟอนต์">
       <button class="nav active" data-filter="all"><span>กข</span>ฟอนต์ทั้งหมด <b id="all-count">—</b></button>
       <button class="nav" data-filter="installed"><span>✓</span>ติดตั้งผ่านแอปแล้ว <b id="installed-count">—</b></button>
     </nav>
     <div class="side-note"><span class="note-icon">↙</span><strong>เลือก • ทดลอง • ติดตั้ง</strong><p>ดาวน์โหลดเฉพาะฟอนต์ที่เลือก<br>ติดตั้งแล้วใช้งานออฟไลน์ได้</p></div>
-    <div class="side-bottom">OPEN SOURCE · v0.2.0 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
+    <div class="side-bottom">OPEN SOURCE · v0.2.1 alpha<br><span>ฟอนต์จาก Google Fonts</span></div>
   </aside>
   <main>
     <header><div class="eyebrow">MADE FOR THAI CREATORS</div><h1>ฟอนต์ไทยที่ใช่<br><span>พร้อมใช้ในเครื่องคุณ</span></h1><p>เลือกฟอนต์สำหรับงานชิ้นต่อไป ทดลองข้อความ แล้วติดตั้งได้ในไม่กี่คลิก</p><span class="badge">ใช้งานฟรี · ไม่ต้องสมัครสมาชิก</span></header>

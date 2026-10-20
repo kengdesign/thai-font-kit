@@ -1,5 +1,7 @@
-Thai Font Kit 0.2.0 alpha — Google Fonts ภาษาไทยสำหรับเครื่องของคุณ
+Thai Font Kit 0.2.1 alpha — Google Fonts ภาษาไทยสำหรับเครื่องของคุณ
 
+- เปลี่ยนไอคอนโปรแกรมเป็นแบบ Icon 02 ของผู้สร้าง และปรับสีส้ม #fd6a0d กับน้ำเงินเข้ม #031a3e ทั่วแอป
+- อัปเดตไอคอนตัวติดตั้ง Windows, macOS และ Linux
 - เพิ่มฟอนต์ภาษาไทยครบ 34 ตระกูล รวม 257 ไฟล์ ตามรายการทางการ Google Fonts
 - เพิ่ม Google Sans, Playpen Sans Thai, IBM Plex Sans Thai Looped, Itim, Mali, Sriracha และตระกูลอื่น ๆ
 - รักษาความเข้ากันได้ของข้อมูลฟอนต์เดิมทั้ง 8 ตระกูล และเพิ่มพื้นที่เลื่อนดูรายการ
