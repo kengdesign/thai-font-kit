@@ -12,38 +12,42 @@
 
 เลือกปุ่มให้ตรงกับเครื่องของคุณ **คลิกเพื่อดาวน์โหลดไฟล์ แล้วเปิดไฟล์เพื่อติดตั้ง**
 
-**เวอร์ชัน 0.2.1 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
+**เวอร์ชัน 0.2.2 Alpha · ฟอนต์ 34 ตระกูล รวม 257 ไฟล์**
+
+เลือกฟอนต์แล้วโหลดตัวอย่างจริงอัตโนมัติ · มีวงหมุนและจำนวนไฟล์ระหว่างติดตั้ง · ลบแคชซ้ำหลังติดตั้งสำเร็จ
+
+**อัปเดตจากรุ่นเก่า:** ปิด Thai Font Kit ก่อนเปิดตัวติดตั้งใหม่ แล้วตรวจรุ่น 0.2.2 ที่มุมล่างซ้าย
 
 ### Windows
 
-[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_x64-setup.exe)
+[![ดาวน์โหลดสำหรับ Windows 10 / 11 แบบ 64 บิต](docs/download-buttons/windows.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.2-alpha.6/Thai.Font.Kit_0.2.2_x64-setup.exe)
 
-สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.42 MB**<br>
+สำหรับพีซีและโน้ตบุ๊ก **Windows 10 / 11 แบบ 64 บิต** · **2.43 MB**<br>
 เปิดไฟล์ `.exe` ที่ดาวน์โหลด แล้วทำตามขั้นตอนบนหน้าจอ
 
 ### macOS
 
-[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_x64.dmg)
+[![ดาวน์โหลดสำหรับ Mac ชิป Apple Silicon](docs/download-buttons/mac-apple-silicon.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.2-alpha.6/Thai.Font.Kit_0.2.2_aarch64.dmg) [![ดาวน์โหลดสำหรับ Mac ชิป Intel](docs/download-buttons/mac-intel.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.2-alpha.6/Thai.Font.Kit_0.2.2_x64.dmg)
 
-- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.76 MB
-- **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 2.90 MB
+- **Mac ชิปตระกูล M:** เลือก **Apple Silicon** · 2.77 MB
+- **Mac โปรเซสเซอร์ Intel:** เลือก **Intel** · 2.91 MB
 
 ตรวจชนิดชิปได้ที่เมนู Apple → **เกี่ยวกับ Mac เครื่องนี้ / About This Mac**<br>
 เปิดไฟล์ `.dmg` แล้วลาก **Thai Font Kit** ไปไว้ใน **Applications** · รองรับ macOS 11 ขึ้นไป
 
 ### Linux
 
-[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.1-alpha.5/Thai.Font.Kit_0.2.1_amd64.AppImage)
+[![ดาวน์โหลดแพ็กเกจ DEB สำหรับ Ubuntu / Debian](docs/download-buttons/linux-deb.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.2-alpha.6/Thai.Font.Kit_0.2.2_amd64.deb) [![ดาวน์โหลด AppImage สำหรับ Linux แบบ 64 บิต](docs/download-buttons/linux-appimage.svg)](https://github.com/kengdesign/thai-font-kit/releases/download/v0.2.2-alpha.6/Thai.Font.Kit_0.2.2_amd64.AppImage)
 
-- **Ubuntu / Debian:** เลือก `.deb` · 2.84 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
-- **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.36 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
+- **Ubuntu / Debian:** เลือก `.deb` · 2.85 MB แล้วเปิดด้วยโปรแกรมติดตั้งแพ็กเกจ
+- **AppImage:** สำหรับ Linux แบบ 64 บิต · 81.37 MB ตั้งสิทธิ์ให้รันเป็นโปรแกรมได้ แล้วเปิดไฟล์
 
 Linux ต้องมี GTK / WebKitGTK 4.1 และแนะนำ fontconfig; AppImage อาจต้องมี FUSE ตามระบบที่ใช้
 
 ## เริ่มใช้งานใน 3 ขั้นตอน
 
 1. เปิด **Thai Font Kit** แล้วค้นหาฟอนต์ที่ชอบ
-2. กด **ทดลองฟอนต์** เพื่อดูข้อความของคุณ หรือกด **ติดตั้งฟอนต์นี้**
+2. เลือกฟอนต์เพื่อโหลดตัวอย่างจริงอัตโนมัติ แล้วกด **ติดตั้งฟอนต์นี้** เมื่อพร้อม
 3. ปิดแล้วเปิดโปรแกรมออกแบบอีกครั้ง เพื่อโหลดรายชื่อฟอนต์ที่ติดตั้ง
 
 แอปดาวน์โหลดเฉพาะฟอนต์ที่เลือก หลังติดตั้งแล้วใช้ฟอนต์แบบออฟไลน์ได้<br>
@@ -67,7 +71,7 @@ Linux ต้องมี GTK / WebKitGTK 4.1 และแนะนำ fontconfig
 - ทดลองข้อความด้วยไฟล์ฟอนต์จริงใน WebView ก่อนติดตั้ง (โหลดเฉพาะไฟล์ตัวอย่าง)
 - ติดตั้งทุกน้ำหนักในตระกูลที่เลือก สำหรับผู้ใช้ปัจจุบัน ไม่ขอสิทธิ์ admin
 - ดาวน์โหลดจาก Google Fonts repository โดย pin commit และตรวจขนาด / SHA-256 / glyph ภาษาไทย
-- จัดเก็บแคช เมื่อโหลดครบแล้วติดตั้งซ้ำได้แบบออฟไลน์
+- ใช้ไฟล์ที่ติดตั้งแล้วสำหรับพรีวิวและตรวจซ่อมแบบออฟไลน์ พร้อมลบแคชซ้ำหลังติดตั้งสำเร็จ
 - ถอนเฉพาะไฟล์ที่มีบันทึกว่าแอปติดตั้งเอง พร้อมตรวจ checksum ก่อนลบ
 - ปฏิเสธการเขียนทับไฟล์เดิมและการลบไฟล์ที่ถูกแก้ไข / symlink
 - ป้องกันสองหน้าต่างติดตั้งพร้อมกัน และบันทึกรายการติดตั้งเพื่อกู้คืนงานที่ค้าง
